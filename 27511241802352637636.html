@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+	<head>
+		<title>&#27511;&#24180;&#23526;&#37636; - &#35441;&#25331;&#23506;&#22825;Q&#26834;</title>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<meta name="google-site-verification" content="z-5UtkmPJIbmb4eJAT8ooaVAMzDH4TRlbMWdKeIVxls" />
+
+
+
+<style>
+
+/* 彈出視窗背景與定位 */
+
+#site-notice {
+
+    position: fixed;
+
+    z-index: 1000000 !important; /* 極高 z-index，防止被遮擋 */
+
+    left: 0;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: auto;
+
+    background-color: rgba(0, 0, 0, 0.6); 
+
+    display: none; /* 預設為隱藏 */
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+}
+
+
+
+/* 視窗主體樣式 (我們將 class 名稱稍微改動，降低被攔截的機率) */
+
+.notice-content {
+
+    background-color: #fefefe;
+
+    margin: auto;
+
+    padding: 0;
+
+    border-radius: 10px;
+
+    width: 90%; 
+
+    max-width: 450px; 
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    position: relative;
+
+    overflow: hidden; 
+
+    animation: fadeIn 0.3s; 
+
+}
+
+
+
+/* 讓圖片自動縮放符合視窗，且保持比例 */
+
+.notice-image {
+
+    display: block;
+
+    width: 100%; 
+
+    height: auto; 
+
+}
+
+
+
+/* 關閉按鈕 */
+
+.close-btn-notice {
+
+    color: #aaa;
+
+    position: absolute;
+
+    top: 5px; 
+
+    right: 10px;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    line-height: 1;
+
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8); 
+
+    z-index: 1000000;
+
+}
+
+
+
+.close-btn-notice:hover,
+
+.close-btn-notice:focus {
+
+    color: #fff;
+
+    text-decoration: none;
+
+}
+
+
+
+/* 動畫效果 */
+
+@keyframes fadeIn {
+
+    from { opacity: 0; transform: scale(0.95); }
+
+    to { opacity: 1; transform: scale(1); }
+
+}
+
+
+
+/* 手機適應 */
+
+@media (max-width: 600px) {
+
+    .notice-content {
+
+        width: 95%;
+
+    }
+
+}
+
+</style>
+		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn11.editmysite.com/css/sites.css?buildtime=1234" />
+<link rel="stylesheet" type="text/css" href="http://cdn11.editmysite.com/css/old/fancybox.css?buildtime=1234" />
+<link rel="stylesheet" type="text/css" href="http://cdn11.editmysite.com/css/social-icons.css?buildtime=1234" media="screen,projection" />
+<link rel="stylesheet" type="text/css" href="files/main_style.css?1783336841" title="wsite-theme-css" />
+<link href='http://cdn2.editmysite.com/fonts/Montserrat/font.css?2' rel='stylesheet' type='text/css' />
+
+<style type='text/css'>
+.wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
+#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
+.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
+.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
+#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
+.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{}
+#wsite-title {}
+.wsite-menu-default a {}
+.wsite-menu a {}
+.wsite-image div, .wsite-caption {}
+.galleryCaptionInnerText {}
+.fancybox-title {}
+.wslide-caption-text {}
+.wsite-phone {}
+.wsite-headline,.wsite-header-section .wsite-content-title {}
+.wsite-headline-paragraph,.wsite-header-section .paragraph {}
+.wsite-button-inner {}
+.wsite-not-footer blockquote {}
+.wsite-footer blockquote {}
+.blog-header h2 a {}
+#wsite-content h2.wsite-product-title {}
+.wsite-product .wsite-product-price a {}
+@media screen and (min-width: 767px) {.wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-size:16px !important;}
+#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
+.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
+.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
+#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
+.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{}
+#wsite-title {}
+.wsite-menu-default a {}
+.wsite-menu a {}
+.wsite-image div, .wsite-caption {}
+.galleryCaptionInnerText {}
+.fancybox-title {}
+.wslide-caption-text {}
+.wsite-phone {}
+.wsite-headline,.wsite-header-section .wsite-content-title {}
+.wsite-headline-paragraph,.wsite-header-section .paragraph {}
+.wsite-button-inner {}
+.wsite-not-footer blockquote {}
+.wsite-footer blockquote {}
+.blog-header h2 a {}
+#wsite-content h2.wsite-product-title {}
+.wsite-product .wsite-product-price a {}
+}</style>
+<link rel='stylesheet' type='text/css' href='http://cdn11.editmysite.com/css/old/slideshow/slideshow.css?buildtime=1234' />
+
+		<script src='files/templateArtifacts.js?1772570823'></script>
+<script>
+var STATIC_BASE = '//cdn1.editmysite.com/';
+var ASSETS_BASE = '//cdn11.editmysite.com/';
+var STYLE_PREFIX = 'wsite';
+</script>
+<script src='https://cdn11.editmysite.com/js/jquery-1.8.3.min.js'></script>
+
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh_TW/stl.js?buildTime=1234&"></script>
+<script src="http://cdn11.editmysite.com/js/site/main.js?buildtime=1234"></script><script type="text/javascript">
+		function initCustomerAccountsModels() {
+					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
+_W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":"_W.CustomerAccounts.BackboneModelData","collection_namespace":"_W.CustomerAccounts.BackboneCollectionData","bootstrap_namespace":"_W.CustomerAccounts.BackboneBootstrap","models":{"CustomerAccounts":{"_class":"CustomerAccounts.Model.CustomerAccounts","defaults":null,"validation":null,"types":null,"idAttribute":null,"keydefs":null}},"collections":{"CustomerAccounts":{"_class":"CustomerAccounts.Collection.CustomerAccounts"}},"bootstrap":[]});
+})();
+		}
+		if(document.createEvent && document.addEventListener) {
+			var initEvt = document.createEvent('Event');
+			initEvt.initEvent('customerAccountsModelsInitialized', true, false);
+			document.dispatchEvent(initEvt);
+		} else if(document.documentElement.initCustomerAccountsModels === 0){
+			document.documentElement.initCustomerAccountsModels++
+		}
+		</script>
+		<script type="text/javascript"> _W = _W || {}; _W.securePrefix='UNSET'; </script><script>_W = _W || {};
+			_W.customerLocale = "en_US";
+			_W.storeName = null;
+			_W.isCheckoutReskin = false;
+			_W.storeCountry = "TW";
+			_W.storeCurrency = "TWD";
+			_W.storeEuPrivacyPolicyUrl = "";
+			com_currentSite = "528841331177835497";
+			com_userID = "124560042";</script><script type='text/javascript' src='http://cdn11.editmysite.com/js/old/slideshow-jq.js?buildtime=1234'></script>
+<script type="text/javascript">_W.configDomain = "";</script><script>_W.relinquish && _W.relinquish()</script>
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh_TW/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
+	var IS_ARCHIVE = 1;
+	var DISABLE_NAV_MORE = 1;
+	function initFlyouts(){
+		initPublishedFlyoutMenus(
+			[{"id":"779116127407485780","title":"&#23506;&#22825;&#23567;&#30334;&#31185;","url":"https:\/\/qqschoolcarnivals.weebly.com\/#intro","target":"","nav_menu":false,"nonclickable":false},{"id":"878235784932118454","title":"&#22290;&#36938;&#26371;Q&A","url":"https:\/\/qqschoolcarnivals.weebly.com\/#carnival","target":"","nav_menu":false,"nonclickable":false},{"id":"995898479738671965","title":"&#22290;&#36938;&#26371;&#35330;&#36092;","url":"https:\/\/qqschoolcarnivals.weebly.com\/#contact","target":"","nav_menu":false,"nonclickable":false},{"id":"395223073860533859","title":"&#26381;&#21209;&#25818;&#40670;","url":"https:\/\/qqschoolcarnivals.weebly.com\/#service","target":"","nav_menu":false,"nonclickable":false}],
+			"613614084957533193",
+			'',
+			'active',
+			false,
+			{"navigation\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}} class=\"wsite-menu-item-wrap\">\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\t{{#membership_required}}\n\t\t\tdata-membership-required=\"{{.}}\"\n\t\t{{\/membership_required}}\n\t\tclass=\"wsite-menu-item\"\n\t\t>\n\t\t{{{title_html}}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n","navigation\/flyout\/list":"<div class=\"wsite-menu-wrap\" style=\"display:none\">\n\t<ul class=\"wsite-menu\">\n\t\t{{#children}}{{> navigation\/flyout\/item}}{{\/children}}\n\t<\/ul>\n<\/div>\n","navigation\/flyout\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}}\n\tclass=\"wsite-menu-subitem-wrap {{#is_current}}wsite-nav-current{{\/is_current}}\"\n\t>\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\tclass=\"wsite-menu-subitem\"\n\t\t>\n\t\t<span class=\"wsite-menu-title\">\n\t\t\t{{{title_html}}}\n\t\t<\/span>{{#has_children}}<span class=\"wsite-menu-arrow\">&gt;<\/span>{{\/has_children}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n"},
+			{}
+		)
+	}
+//-->
+</script>
+		
+		
+	</head>
+	<body class="no-header-page  wsite-page-27511241802352637636  full-width-body-off header-overlay-on alt-nav-off  wsite-theme-light"><div class="wrapper">
+    <div class="birdseye-header">
+      <div class="nav-wrap">
+        <div class="container">
+          <div class="logo"><span class="wsite-logo">
+
+	<a href="">
+	
+	<span id="wsite-title">&#35441;&#25331;&#23506;&#22825;Q&#26834;</span>
+	
+	</a>
+
+</span></div>
+          <div class="nav desktop-nav"><ul class="wsite-menu-default">
+		<li id="pg779116127407485780" class="wsite-menu-item-wrap">
+			<a
+						href="https://qqschoolcarnivals.weebly.com/#intro"
+				class="wsite-menu-item"
+				>
+				寒天小百科
+			</a>
+			
+		</li>
+		<li id="pg878235784932118454" class="wsite-menu-item-wrap">
+			<a
+						href="https://qqschoolcarnivals.weebly.com/#carnival"
+				class="wsite-menu-item"
+				>
+				園遊會Q&A
+			</a>
+			
+		</li>
+		<li id="pg995898479738671965" class="wsite-menu-item-wrap">
+			<a
+						href="https://qqschoolcarnivals.weebly.com/#contact"
+				class="wsite-menu-item"
+				>
+				園遊會訂購
+			</a>
+			
+		</li>
+		<li id="pg395223073860533859" class="wsite-menu-item-wrap">
+			<a
+						href="https://qqschoolcarnivals.weebly.com/#service"
+				class="wsite-menu-item"
+				>
+				服務據點
+			</a>
+			
+		</li>
+</ul>
+</div>
+          <a class="hamburger" aria-label="Menu" href="#"><span></span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-wrap">
+      <div id="wsite-content" class="wsite-elements wsite-not-footer">
+	<div class="wsite-section-wrap">
+	<div class="wsite-section wsite-body-section wsite-section-bg-image wsite-background-17" style="background-image: url(&quot;/uploads/1/2/4/5/124560042/background-images/258115876.jpg&quot;) ;background-repeat: no-repeat ;background-position: undefined undefined ;background-size: 100% ;background-color: transparent ;background-size: cover;" >
+		<div class="wsite-section-content">
+          <div class="container">
+			<div class="wsite-section-elements">
+				<h2 class="wsite-content-title" style="text-align:center;"><font size="6"><strong>&#36629;&#40670;&#29031;&#29255;</strong>&#20986;&#29694;&#25773;&#25918;&#37749; &#40670;&#36984;&#21363;&#21487;&#33258;&#21205;&#25773;&#25918;&nbsp;</font></h2>
+
+<div><div style="height:20px;overflow:hidden"></div>
+<div id='692109569236328266-slideshow'></div>
+<script type='text/javascript'>
+(function(jQuery) {
+function init() { window.wSlideshow && window.wSlideshow.render({elementID:"692109569236328266",nav:"thumbnails",navLocation:"bottom",captionLocation:"bottom",transition:"fade",autoplay:"0",speed:"3",aspectRatio:"auto",showControls:"true",randomStart:"false",images:[{"url":"1/2/4/5/124560042/10503-06-190309-0038.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0004.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0005.jpg","width":"1280","height":"720"},{"url":"1/2/4/5/124560042/10503-06-190309-0007.jpg","width":"1280","height":"720"},{"url":"1/2/4/5/124560042/10503-06-190309-0008.jpg","width":"720","height":"1280"},{"url":"1/2/4/5/124560042/10503-06-190309-0010.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0040.jpg","width":"800","height":"779"},{"url":"1/2/4/5/124560042/10503-06-190309-0012.jpg","width":"1280","height":"720"},{"url":"1/2/4/5/124560042/10503-06-190309-0013.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0018.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0019.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0020.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0021.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0022.jpg","width":"720","height":"1280"},{"url":"1/2/4/5/124560042/10503-06-190309-0055.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0023.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0003.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0024.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0025.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0027.jpg","width":"720","height":"1280"},{"url":"1/2/4/5/124560042/10503-06-190309-0028.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0029.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0030.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0031.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0032.jpg","width":"1280","height":"720"},{"url":"1/2/4/5/124560042/10503-06-190309-0034.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/line-album-251007-2.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0035.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0036.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0037.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0039.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0056.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0041.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0044.jpg","width":"533","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0045.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0046.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0047.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0048.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0042.jpg","width":"759","height":"601"},{"url":"1/2/4/5/124560042/10503-06-190309-0049.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0050.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0051.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0052.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0054.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0057.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0058.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0059.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0060.jpg","width":"1280","height":"720"},{"url":"1/2/4/5/124560042/10503-06-190309-0061.jpg","width":"703","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0062.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0063.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0053.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0064.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0065.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/line-album-251007-3.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/line-album-251007-1.jpg","width":"600","height":"800"}]}) }
+jQuery(document).ready(init);
+})(window.jQuery)
+</script>
+
+<div style="height:20px;overflow:hidden"></div></div>
+
+<div style="text-align:center;"><div style="height: 80px; overflow: hidden;"></div>
+<a class="wsite-button wsite-button-small wsite-button-normal" href="" >
+<span class="wsite-button-inner">回首頁</span>
+</a>
+<div style="height: 10px; overflow: hidden;"></div></div>
+			</div>
+		</div>
+      </div>
+
+	</div>
+</div>
+
+</div>
+
+    </div>
+
+    <div class="footer-wrap">
+        <div class="footer">
+			<div style="display:none;">Create a <a target="_top" href="http:///">free web site</a> with <a target="_top" href="http:///" title="免費網站">Weebly</a></div>
+		</div>
+    </div><!-- end footer-wrap -->
+  </div><!-- /.wrapper -->
+
+  <div id="navMobile" class="nav mobile-nav">
+    <a class="hamburger" aria-label="Menu" href="#"><span></span></a>
+    <ul class="wsite-menu-default">
+    		<li id="pg779116127407485780" class="wsite-menu-item-wrap">
+    			<a
+    						href="https://qqschoolcarnivals.weebly.com/#intro"
+    				class="wsite-menu-item"
+    				>
+    				寒天小百科
+    			</a>
+    			
+    		</li>
+    		<li id="pg878235784932118454" class="wsite-menu-item-wrap">
+    			<a
+    						href="https://qqschoolcarnivals.weebly.com/#carnival"
+    				class="wsite-menu-item"
+    				>
+    				園遊會Q&A
+    			</a>
+    			
+    		</li>
+    		<li id="pg995898479738671965" class="wsite-menu-item-wrap">
+    			<a
+    						href="https://qqschoolcarnivals.weebly.com/#contact"
+    				class="wsite-menu-item"
+    				>
+    				園遊會訂購
+    			</a>
+    			
+    		</li>
+    		<li id="pg395223073860533859" class="wsite-menu-item-wrap">
+    			<a
+    						href="https://qqschoolcarnivals.weebly.com/#service"
+    				class="wsite-menu-item"
+    				>
+    				服務據點
+    			</a>
+    			
+    		</li>
+    </ul>
+  </div>
+
+  <script type="text/javascript" src="files/theme/plugins.js"></script>
+  <script type="text/javascript" src="files/theme/custom.js"></script>
+    <div id="customer-accounts-app"></div>
+    <script src="http://cdn11.editmysite.com/js/site/main-customer-accounts-site.js?buildtime=1234"></script>
+
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136120499-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-136120499-1');
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // === Weebly 廣告隱藏邏輯 (保留) ===
+    var adElement = document.getElementById('weebly-footer-signup-container-v3');
+    if (adElement) {
+        adElement.remove();
+        adElement.style.pointerEvents = 'none';
+        adElement.style.height = '0px';
+        adElement.style.visibility = 'hidden';
+    }
+
+    // === 手機選單自動關閉邏輯 (保留) ===
+    var anchorLinks = document.querySelectorAll('#navMobile a[href*="#"]');
+    var hamburgerButton = document.querySelector('a.hamburger');
+
+    if (anchorLinks.length > 0 && hamburgerButton) {
+        anchorLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                setTimeout(function() {
+                    hamburgerButton.click();
+                    document.body.classList.remove('nav-open'); 
+                    document.body.classList.remove('mobile-nav-open'); 
+                }, 50); 
+            });
+        });
+    }
+
+    // =========================================================
+    // === 手機視差修復腳本 (Parallax Fix) (已註解/移除 - 避免背景模糊) ===
+    // =========================================================
+    /*
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+    if (isMobile) {
+        var sections = document.querySelectorAll('.wsite-section'); 
+        sections.forEach(function(section) {
+            var bgImage = section.querySelector('.wsite-section-bg-image');
+            if (bgImage) {
+                bgImage.style.backgroundAttachment = 'scroll';
+                bgImage.style.setProperty('--bg-pos', bgImage.style.backgroundPositionY || '50%');
+                bgImage.classList.add('parallax-js-active');
+            }
+        });
+        function updateParallax() {
+            document.querySelectorAll('.parallax-js-active').forEach(function(bgImage) {
+                var section = bgImage.closest('.wsite-section');
+                if (!section) return;
+                var sectionTop = section.getBoundingClientRect().top;
+                var sectionHeight = section.offsetHeight;
+                var viewportHeight = window.innerHeight;
+                if (sectionTop < viewportHeight && sectionTop + sectionHeight > 0) {
+                    var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                    var offset = section.offsetTop;
+                    var yPos = (scrollPosition - offset) * 0.3; 
+                    bgImage.style.backgroundPositionY = yPos + 'px';
+                }
+            });
+        }
+        window.addEventListener('scroll', updateParallax);
+        window.addEventListener('resize', updateParallax);
+        updateParallax();
+    }
+    */
+    // =========================================================
+    // === 5. 彈出視窗顯示與隱藏邏輯 (已修復狀態) ===
+    // =========================================================
+    var popup = document.getElementById('site-notice');
+    var POPUP_DELAY = 1000; // 延遲 1 秒顯示
+
+    // 關閉視窗的函式 - 使用 setProperty 設置 !important
+    function closePopup() {
+        if (popup) {
+            popup.style.setProperty('display', 'none', 'important');
+        }
+    }
+
+    // 顯示邏輯 - 使用 setProperty 設置 !important
+    if (popup) { 
+        var img = popup.querySelector('.notice-image');
+        if (img) {
+            var showPopup = function() {
+                // 強制使用 display: flex !important
+                setTimeout(function() { popup.style.setProperty('display', 'flex', 'important'); }, POPUP_DELAY);
+            };
+
+            if (img.complete) {
+                showPopup();
+            }  else {
+                img.onload = showPopup;
+                img.onerror = function() {
+                    console.error("Site notice image failed to load.");
+                };
+            }
+        }
+    }
+
+    // *** 最終修正: 在 document 級別監聽所有點擊，強制執行關閉 ***
+    document.addEventListener('click', function(event) {
+        if (!popup || popup.style.display === 'none') {
+            return; // 彈窗不存在或已關閉則跳過
+        }
+        
+        // 1. 檢查是否點擊了 "X" 關閉按鈕 (.close-btn-notice) 或其子元素
+        var isCloseButton = event.target.closest('.close-btn-notice');
+        
+        // 2. 檢查是否點擊了彈窗的最外層容器 (#site-notice) (即半透明背景)
+        var isBackdrop = (event.target === popup);
+
+        // 如果點擊目標是關閉按鈕，或點擊了彈窗背景
+        if (isCloseButton || isBackdrop) {
+            closePopup();
+            // 阻止事件傳播，避免 Weebly 腳本干擾
+            event.stopPropagation(); 
+        }
+    }, true); // 使用 'true' 讓事件在捕獲階段就觸發，提高成功率
+
+});
+</script>
+	</body>
+</html>
