@@ -32,6 +32,28 @@ sup {
 sub {
     bottom: -0.25em !important;
 }
+
+/* ============================================================
+   [修正] 強制顯示 Logo + 導覽選單區塊
+   問題原因：<body> 曾帶有 no-header-page class，
+   主題樣式表 (main_style.css) 對該 class 設定了
+   .no-header-page .birdseye-header { display: none; }
+   導致整個 header (logo + nav) 被隱藏。
+   下面這條規則用 !important 蓋掉隱藏規則，
+   即使日後 Weebly 後台又把 no-header-page 加回 body，
+   header 仍會強制顯示，不會再消失。
+   ============================================================ */
+.birdseye-header {
+    display: block !important;
+}
+.birdseye-header .nav-wrap {
+    display: block !important;
+}
+.birdseye-header .logo,
+.birdseye-header .nav.desktop-nav {
+    display: block !important;
+}
+
 /* 彈出視窗背景與定位 */
 
 #site-notice {
@@ -247,7 +269,7 @@ var STYLE_PREFIX = 'wsite';
 		園遊會熱門商品 | 話拳寒天Q棒 | SGS認證無人工色素
 		
 	</head>
-	<body class="no-header-page  wsite-page-index  full-width-body-off header-overlay-on alt-nav-off  wsite-theme-light"><div class="wrapper">
+	<body class="wsite-page-index full-width-body-off header-overlay-on alt-nav-off wsite-theme-light"><div class="wrapper">
     <div class="birdseye-header">
       <div class="nav-wrap">
         <div class="container">
