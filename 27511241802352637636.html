@@ -1,535 +1,373 @@
 <!DOCTYPE html>
 <html lang="zh_TW">
 	<head>
-		<title>&#27511;&#24180;&#23526;&#37636; - &#35441;&#25331;&#23506;&#22825;Q&#26834;</title>
-
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+		<title>歷年實錄 - 話拳寒天Q棒</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="google-site-verification" content="z-5UtkmPJIbmb4eJAT8ooaVAMzDH4TRlbMWdKeIVxls" />
 
-
-
 <style>
-
-/* 彈出視窗背景與定位 */
-
+/* === 1. 彈出視窗背景與定位 === */
 #site-notice {
-
-    position: fixed;
-
-    z-index: 1000000 !important; /* 極高 z-index，防止被遮擋 */
-
-    left: 0;
-
-    top: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    overflow: auto;
-
-    background-color: rgba(0, 0, 0, 0.6); 
-
-    display: none; /* 預設為隱藏 */
-
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 20px;
-
+    position: fixed;
+    z-index: 1000000 !important;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); 
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
-
-
-
-/* 視窗主體樣式 (我們將 class 名稱稍微改動，降低被攔截的機率) */
-
 .notice-content {
-
-    background-color: #fefefe;
-
-    margin: auto;
-
-    padding: 0;
-
-    border-radius: 10px;
-
-    width: 90%; 
-
-    max-width: 450px; 
-
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-
-    position: relative;
-
-    overflow: hidden; 
-
-    animation: fadeIn 0.3s; 
-
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border-radius: 10px;
+    width: 90%; 
+    max-width: 450px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden; 
+    animation: fadeIn 0.3s; 
 }
-
-
-
-/* 讓圖片自動縮放符合視窗，且保持比例 */
-
 .notice-image {
-
-    display: block;
-
-    width: 100%; 
-
-    height: auto; 
-
+    display: block;
+    width: 100%; 
+    height: auto; 
 }
-
-
-
-/* 關閉按鈕 */
-
 .close-btn-notice {
-
-    color: #aaa;
-
-    position: absolute;
-
-    top: 5px; 
-
-    right: 10px;
-
-    font-size: 32px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    line-height: 1;
-
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8); 
-
-    z-index: 1000000;
-
+    color: #aaa;
+    position: absolute;
+    top: 5px; 
+    right: 10px;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8); 
+    z-index: 1000000;
 }
-
-
-
-.close-btn-notice:hover,
-
-.close-btn-notice:focus {
-
-    color: #fff;
-
-    text-decoration: none;
-
+.close-btn-notice:hover, .close-btn-notice:focus {
+    color: #fff;
+    text-decoration: none;
 }
-
-
-
-/* 動畫效果 */
-
 @keyframes fadeIn {
-
-    from { opacity: 0; transform: scale(0.95); }
-
-    to { opacity: 1; transform: scale(1); }
-
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-
-
-/* 手機適應 */
-
-@media (max-width: 600px) {
-
-    .notice-content {
-
-        width: 95%;
-
-    }
-
+/* === 2. 純 CSS 幻燈片核心樣式 === */
+.gallery-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+/* 大圖展示區 */
+.main-stage {
+    position: relative;
+    width: 100%;
+    height: 540px;
+    background: #151515;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+.main-stage img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 保持原圖比例不變形 */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    left: 0;
+    top: 0;
+}
+/* 預設顯示第一張 */
+.main-stage img:first-child {
+    opacity: 1;
+    z-index: 1;
+}
+/* 當縮圖錨點被觸發時，顯示對應圖片 */
+.main-stage img:target {
+    opacity: 1;
+    z-index: 2;
+}
+/* 隱藏非當前目標的其他目標圖 */
+.main-stage img:target ~ img:target {
+    opacity: 0;
 }
 
+/* 下方縮圖橫向捲軸區 */
+.thumb-scroll {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 15px 5px;
+    scroll-behavior: smooth;
+}
+/* 美化橫向滾動條 */
+.thumb-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+.thumb-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 4px;
+}
+.thumb-scroll::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+}
+.thumb-link {
+    flex: 0 0 80px;
+    height: 60px;
+    border-radius: 4px;
+    overflow: hidden;
+    opacity: 0.5;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+}
+.thumb-link:hover, .thumb-link:focus {
+    opacity: 1;
+    border-color: #ff6b81; /* 亮色焦點外框 */
+}
+.thumb-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .main-stage { height: 380px; } /* 手機端自適應縮減高度 */
+    .thumb-link { flex: 0 0 65px; height: 50px; }
+}
 </style>
-		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn11.editmysite.com/css/sites.css?buildtime=1234" />
-<link rel="stylesheet" type="text/css" href="http://cdn11.editmysite.com/css/old/fancybox.css?buildtime=1234" />
-<link rel="stylesheet" type="text/css" href="http://cdn11.editmysite.com/css/social-icons.css?buildtime=1234" media="screen,projection" />
-<link rel="stylesheet" type="text/css" href="files/main_style.css?1783336841" title="wsite-theme-css" />
-<link href='http://cdn2.editmysite.com/fonts/Montserrat/font.css?2' rel='stylesheet' type='text/css' />
 
-<style type='text/css'>
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
-#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
-.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{}
-#wsite-title {}
-.wsite-menu-default a {}
-.wsite-menu a {}
-.wsite-image div, .wsite-caption {}
-.galleryCaptionInnerText {}
-.fancybox-title {}
-.wslide-caption-text {}
-.wsite-phone {}
-.wsite-headline,.wsite-header-section .wsite-content-title {}
-.wsite-headline-paragraph,.wsite-header-section .paragraph {}
-.wsite-button-inner {}
-.wsite-not-footer blockquote {}
-.wsite-footer blockquote {}
-.blog-header h2 a {}
-#wsite-content h2.wsite-product-title {}
-.wsite-product .wsite-product-price a {}
-@media screen and (min-width: 767px) {.wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-size:16px !important;}
-#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
-.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{}
-#wsite-title {}
-.wsite-menu-default a {}
-.wsite-menu a {}
-.wsite-image div, .wsite-caption {}
-.galleryCaptionInnerText {}
-.fancybox-title {}
-.wslide-caption-text {}
-.wsite-phone {}
-.wsite-headline,.wsite-header-section .wsite-content-title {}
-.wsite-headline-paragraph,.wsite-header-section .paragraph {}
-.wsite-button-inner {}
-.wsite-not-footer blockquote {}
-.wsite-footer blockquote {}
-.blog-header h2 a {}
-#wsite-content h2.wsite-product-title {}
-.wsite-product .wsite-product-price a {}
-}</style>
-<link rel='stylesheet' type='text/css' href='http://cdn11.editmysite.com/css/old/slideshow/slideshow.css?buildtime=1234' />
-
-		<script src='files/templateArtifacts.js?1772570823'></script>
-<script>
-var STATIC_BASE = '//cdn1.editmysite.com/';
-var ASSETS_BASE = '//cdn11.editmysite.com/';
-var STYLE_PREFIX = 'wsite';
-</script>
-<script src='https://cdn11.editmysite.com/js/jquery-1.8.3.min.js'></script>
-
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh_TW/stl.js?buildTime=1234&"></script>
-<script src="http://cdn11.editmysite.com/js/site/main.js?buildtime=1234"></script><script type="text/javascript">
-		function initCustomerAccountsModels() {
-					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
-_W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":"_W.CustomerAccounts.BackboneModelData","collection_namespace":"_W.CustomerAccounts.BackboneCollectionData","bootstrap_namespace":"_W.CustomerAccounts.BackboneBootstrap","models":{"CustomerAccounts":{"_class":"CustomerAccounts.Model.CustomerAccounts","defaults":null,"validation":null,"types":null,"idAttribute":null,"keydefs":null}},"collections":{"CustomerAccounts":{"_class":"CustomerAccounts.Collection.CustomerAccounts"}},"bootstrap":[]});
-})();
-		}
-		if(document.createEvent && document.addEventListener) {
-			var initEvt = document.createEvent('Event');
-			initEvt.initEvent('customerAccountsModelsInitialized', true, false);
-			document.dispatchEvent(initEvt);
-		} else if(document.documentElement.initCustomerAccountsModels === 0){
-			document.documentElement.initCustomerAccountsModels++
-		}
-		</script>
-		<script type="text/javascript"> _W = _W || {}; _W.securePrefix='UNSET'; </script><script>_W = _W || {};
-			_W.customerLocale = "en_US";
-			_W.storeName = null;
-			_W.isCheckoutReskin = false;
-			_W.storeCountry = "TW";
-			_W.storeCurrency = "TWD";
-			_W.storeEuPrivacyPolicyUrl = "";
-			com_currentSite = "528841331177835497";
-			com_userID = "124560042";</script><script type='text/javascript' src='http://cdn11.editmysite.com/js/old/slideshow-jq.js?buildtime=1234'></script>
-<script type="text/javascript">_W.configDomain = "";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh_TW/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
-	var IS_ARCHIVE = 1;
-	var DISABLE_NAV_MORE = 1;
-	function initFlyouts(){
-		initPublishedFlyoutMenus(
-			[{"id":"779116127407485780","title":"&#23506;&#22825;&#23567;&#30334;&#31185;","url":"https:\/\/qqschoolcarnivals.weebly.com\/#intro","target":"","nav_menu":false,"nonclickable":false},{"id":"878235784932118454","title":"&#22290;&#36938;&#26371;Q&A","url":"https:\/\/qqschoolcarnivals.weebly.com\/#carnival","target":"","nav_menu":false,"nonclickable":false},{"id":"995898479738671965","title":"&#22290;&#36938;&#26371;&#35330;&#36092;","url":"https:\/\/qqschoolcarnivals.weebly.com\/#contact","target":"","nav_menu":false,"nonclickable":false},{"id":"395223073860533859","title":"&#26381;&#21209;&#25818;&#40670;","url":"https:\/\/qqschoolcarnivals.weebly.com\/#service","target":"","nav_menu":false,"nonclickable":false}],
-			"613614084957533193",
-			'',
-			'active',
-			false,
-			{"navigation\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}} class=\"wsite-menu-item-wrap\">\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\t{{#membership_required}}\n\t\t\tdata-membership-required=\"{{.}}\"\n\t\t{{\/membership_required}}\n\t\tclass=\"wsite-menu-item\"\n\t\t>\n\t\t{{{title_html}}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n","navigation\/flyout\/list":"<div class=\"wsite-menu-wrap\" style=\"display:none\">\n\t<ul class=\"wsite-menu\">\n\t\t{{#children}}{{> navigation\/flyout\/item}}{{\/children}}\n\t<\/ul>\n<\/div>\n","navigation\/flyout\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}}\n\tclass=\"wsite-menu-subitem-wrap {{#is_current}}wsite-nav-current{{\/is_current}}\"\n\t>\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\tclass=\"wsite-menu-subitem\"\n\t\t>\n\t\t<span class=\"wsite-menu-title\">\n\t\t\t{{{title_html}}}\n\t\t<\/span>{{#has_children}}<span class=\"wsite-menu-arrow\">&gt;<\/span>{{\/has_children}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n"},
-			{}
-		)
-	}
-//-->
-</script>
-		
-		
+		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="https://cdn11.editmysite.com/css/sites.css?buildtime=1234" />
+		<link rel="stylesheet" type="text/css" href="files/main_style.css?1783336841" title="wsite-theme-css" />
+		<link href='https://cdn2.editmysite.com/fonts/Montserrat/font.css?2' rel='stylesheet' type='text/css' />
+		<script src='https://cdn11.editmysite.com/js/jquery-1.8.3.min.js'></script>
 	</head>
-	<body class="no-header-page  wsite-page-27511241802352637636  full-width-body-off header-overlay-on alt-nav-off  wsite-theme-light"><div class="wrapper">
-    <div class="birdseye-header">
-      <div class="nav-wrap">
-        <div class="container">
-          <div class="logo"><span class="wsite-logo">
 
-	<a href="">
-	
-	<span id="wsite-title">&#35441;&#25331;&#23506;&#22825;Q&#26834;</span>
-	
-	</a>
-
-</span></div>
-          <div class="nav desktop-nav"><ul class="wsite-menu-default">
-		<li id="pg779116127407485780" class="wsite-menu-item-wrap">
-			<a
-						href="https://qqschoolcarnivals.weebly.com/#intro"
-				class="wsite-menu-item"
-				>
-				寒天小百科
-			</a>
-			
-		</li>
-		<li id="pg878235784932118454" class="wsite-menu-item-wrap">
-			<a
-						href="https://qqschoolcarnivals.weebly.com/#carnival"
-				class="wsite-menu-item"
-				>
-				園遊會Q&A
-			</a>
-			
-		</li>
-		<li id="pg995898479738671965" class="wsite-menu-item-wrap">
-			<a
-						href="https://qqschoolcarnivals.weebly.com/#contact"
-				class="wsite-menu-item"
-				>
-				園遊會訂購
-			</a>
-			
-		</li>
-		<li id="pg395223073860533859" class="wsite-menu-item-wrap">
-			<a
-						href="https://qqschoolcarnivals.weebly.com/#service"
-				class="wsite-menu-item"
-				>
-				服務據點
-			</a>
-			
-		</li>
-</ul>
-</div>
-          <a class="hamburger" aria-label="Menu" href="#"><span></span></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="main-wrap">
-      <div id="wsite-content" class="wsite-elements wsite-not-footer">
-	<div class="wsite-section-wrap">
-	<div class="wsite-section wsite-body-section wsite-section-bg-image wsite-background-17" style="background-image: url(&quot;/uploads/1/2/4/5/124560042/background-images/258115876.jpg&quot;) ;background-repeat: no-repeat ;background-position: undefined undefined ;background-size: 100% ;background-color: transparent ;background-size: cover;" >
-		<div class="wsite-section-content">
-          <div class="container">
-			<div class="wsite-section-elements">
-				<h2 class="wsite-content-title" style="text-align:center;"><font size="6"><strong>&#36629;&#40670;&#29031;&#29255;</strong>&#20986;&#29694;&#25773;&#25918;&#37749; &#40670;&#36984;&#21363;&#21487;&#33258;&#21205;&#25773;&#25918;&nbsp;</font></h2>
-
-<div><div style="height:20px;overflow:hidden"></div>
-<div id='692109569236328266-slideshow'></div>
-<script type='text/javascript'>
-(function(jQuery) {
-function init() { window.wSlideshow && window.wSlideshow.render({elementID:"692109569236328266",nav:"thumbnails",navLocation:"bottom",captionLocation:"bottom",transition:"fade",autoplay:"0",speed:"3",aspectRatio:"auto",showControls:"true",randomStart:"false",images:[{"url":"1/2/4/5/124560042/10503-06-190309-0038.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0004.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0005.jpg","width":"1280","height":"720"},{"url":"1/2/4/5/124560042/10503-06-190309-0007.jpg","width":"1280","height":"720"},{"url":"1/2/4/5/124560042/10503-06-190309-0008.jpg","width":"720","height":"1280"},{"url":"1/2/4/5/124560042/10503-06-190309-0010.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0040.jpg","width":"800","height":"779"},{"url":"1/2/4/5/124560042/10503-06-190309-0012.jpg","width":"1280","height":"720"},{"url":"1/2/4/5/124560042/10503-06-190309-0013.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0018.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0019.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0020.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0021.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0022.jpg","width":"720","height":"1280"},{"url":"1/2/4/5/124560042/10503-06-190309-0055.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0023.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0003.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0024.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0025.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0027.jpg","width":"720","height":"1280"},{"url":"1/2/4/5/124560042/10503-06-190309-0028.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0029.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0030.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0031.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0032.jpg","width":"1280","height":"720"},{"url":"1/2/4/5/124560042/10503-06-190309-0034.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/line-album-251007-2.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0035.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0036.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0037.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0039.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0056.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0041.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0044.jpg","width":"533","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0045.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0046.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0047.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0048.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0042.jpg","width":"759","height":"601"},{"url":"1/2/4/5/124560042/10503-06-190309-0049.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0050.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0051.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0052.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0054.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0057.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0058.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0059.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0060.jpg","width":"1280","height":"720"},{"url":"1/2/4/5/124560042/10503-06-190309-0061.jpg","width":"703","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0062.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0063.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0053.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/10503-06-190309-0064.jpg","width":"600","height":"800"},{"url":"1/2/4/5/124560042/10503-06-190309-0065.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/line-album-251007-3.jpg","width":"800","height":"600"},{"url":"1/2/4/5/124560042/line-album-251007-1.jpg","width":"600","height":"800"}]}) }
-jQuery(document).ready(init);
-})(window.jQuery)
-</script>
-
-<div style="height:20px;overflow:hidden"></div></div>
-
-<div style="text-align:center;"><div style="height: 80px; overflow: hidden;"></div>
-<a class="wsite-button wsite-button-small wsite-button-normal" href="" >
-<span class="wsite-button-inner">回首頁</span>
-</a>
-<div style="height: 10px; overflow: hidden;"></div></div>
+	<body class="no-header-page wsite-page-27511241802352637636 full-width-body-off header-overlay-on alt-nav-off wsite-theme-light">
+	<div class="wrapper">
+		
+		<div class="birdseye-header">
+			<div class="nav-wrap">
+				<div class="container">
+					<div class="logo"><span class="wsite-logo"><a href="/"><span id="wsite-title">話拳寒天Q棒</span></a></span></div>
+					<div class="nav desktop-nav">
+						<ul class="wsite-menu-default">
+							<li class="wsite-menu-item-wrap"><a href="/#intro" class="wsite-menu-item">寒天小百科</a></li>
+							<li class="wsite-menu-item-wrap"><a href="/#carnival" class="wsite-menu-item">園遊會Q&A</a></li>
+							<li class="wsite-menu-item-wrap"><a href="/#contact" class="wsite-menu-item">園遊會訂購</a></li>
+							<li class="wsite-menu-item-wrap"><a href="/#service" class="wsite-menu-item">服務據點</a></li>
+						</ul>
+					</div>
+					<a class="hamburger" aria-label="Menu" href="#"><span></span></a>
+				</div>
 			</div>
 		</div>
-      </div>
 
-	</div>
-</div>
+		<div class="main-wrap">
+			<div id="wsite-content" class="wsite-elements wsite-not-footer">
+				<div class="wsite-section-wrap">
+					<div class="wsite-section wsite-body-section wsite-section-bg-image wsite-background-17" style="background-image: url('/uploads/1/2/4/5/124560042/background-images/258115876.jpg'); background-size: cover; background-position: center;">
+						<div class="wsite-section-content">
+							<div class="container">
+								<div class="wsite-section-elements">
+									<h2 class="wsite-content-title" style="text-align:center;"><font size="6"><strong>歷年園遊會實錄照片</strong></font></h2>
+									
+									<div>
+										<div style="height:20px;overflow:hidden"></div>
+										
+										<div class="gallery-container">
+											
+											<div class="main-stage">
+												<img id="pic1" src="/uploads/1/2/4/5/124560042/10503-06-190309-0038.jpg" alt="實錄1">
+												<img id="pic2" src="/uploads/1/2/4/5/124560042/10503-06-190309-0004.jpg" alt="實錄2" loading="lazy">
+												<img id="pic3" src="/uploads/1/2/4/5/124560042/10503-06-190309-0005.jpg" alt="實錄3" loading="lazy">
+												<img id="pic4" src="/uploads/1/2/4/5/124560042/10503-06-190309-0007.jpg" alt="實錄4" loading="lazy">
+												<img id="pic5" src="/uploads/1/2/4/5/124560042/10503-06-190309-0008.jpg" alt="實錄5" loading="lazy">
+												<img id="pic6" src="/uploads/1/2/4/5/124560042/10503-06-190309-0010.jpg" alt="實錄6" loading="lazy">
+												<img id="pic7" src="/uploads/1/2/4/5/124560042/10503-06-190309-0040.jpg" alt="實錄7" loading="lazy">
+												<img id="pic8" src="/uploads/1/2/4/5/124560042/10503-06-190309-0012.jpg" alt="實錄8" loading="lazy">
+												<img id="pic9" src="/uploads/1/2/4/5/124560042/10503-06-190309-0013.jpg" alt="實錄9" loading="lazy">
+												<img id="pic10" src="/uploads/1/2/4/5/124560042/10503-06-190309-0018.jpg" alt="實錄10" loading="lazy">
+												<img id="pic11" src="/uploads/1/2/4/5/124560042/10503-06-190309-0019.jpg" alt="實錄11" loading="lazy">
+												<img id="pic12" src="/uploads/1/2/4/5/124560042/10503-06-190309-0020.jpg" alt="實錄12" loading="lazy">
+												<img id="pic13" src="/uploads/1/2/4/5/124560042/10503-06-190309-0021.jpg" alt="實錄13" loading="lazy">
+												<img id="pic14" src="/uploads/1/2/4/5/124560042/10503-06-190309-0022.jpg" alt="實錄14" loading="lazy">
+												<img id="pic15" src="/uploads/1/2/4/5/124560042/10503-06-190309-0055.jpg" alt="實錄15" loading="lazy">
+												<img id="pic16" src="/uploads/1/2/4/5/124560042/10503-06-190309-0023.jpg" alt="實錄16" loading="lazy">
+												<img id="pic17" src="/uploads/1/2/4/5/124560042/10503-06-190309-0003.jpg" alt="實錄17" loading="lazy">
+												<img id="pic18" src="/uploads/1/2/4/5/124560042/10503-06-190309-0024.jpg" alt="實錄18" loading="lazy">
+												<img id="pic19" src="/uploads/1/2/4/5/124560042/10503-06-190309-0025.jpg" alt="實錄19" loading="lazy">
+												<img id="pic20" src="/uploads/1/2/4/5/124560042/10503-06-190309-0027.jpg" alt="實錄20" loading="lazy">
+												<img id="pic21" src="/uploads/1/2/4/5/124560042/10503-06-190309-0028.jpg" alt="實錄21" loading="lazy">
+												<img id="pic22" src="/uploads/1/2/4/5/124560042/10503-06-190309-0029.jpg" alt="實錄22" loading="lazy">
+												<img id="pic23" src="/uploads/1/2/4/5/124560042/10503-06-190309-0030.jpg" alt="實錄23" loading="lazy">
+												<img id="pic24" src="/uploads/1/2/4/5/124560042/10503-06-190309-0031.jpg" alt="實錄24" loading="lazy">
+												<img id="pic25" src="/uploads/1/2/4/5/124560042/10503-06-190309-0032.jpg" alt="實錄25" loading="lazy">
+												<img id="pic26" src="/uploads/1/2/4/5/124560042/10503-06-190309-0034.jpg" alt="實錄26" loading="lazy">
+												<img id="pic27" src="/uploads/1/2/4/5/124560042/line-album-251007-2.jpg" alt="實錄27" loading="lazy">
+												<img id="pic28" src="/uploads/1/2/4/5/124560042/10503-06-190309-0035.jpg" alt="實錄28" loading="lazy">
+												<img id="pic29" src="/uploads/1/2/4/5/124560042/10503-06-190309-0036.jpg" alt="實錄29" loading="lazy">
+												<img id="pic30" src="/uploads/1/2/4/5/124560042/10503-06-190309-0037.jpg" alt="實錄30" loading="lazy">
+												<img id="pic31" src="/uploads/1/2/4/5/124560042/10503-06-190309-0039.jpg" alt="實錄31" loading="lazy">
+												<img id="pic32" src="/uploads/1/2/4/5/124560042/10503-06-190309-0056.jpg" alt="實錄32" loading="lazy">
+												<img id="pic33" src="/uploads/1/2/4/5/124560042/10503-06-190309-0041.jpg" alt="實錄33" loading="lazy">
+												<img id="pic34" src="/uploads/1/2/4/5/124560042/10503-06-190309-0044.jpg" alt="實錄34" loading="lazy">
+												<img id="pic35" src="/uploads/1/2/4/5/124560042/10503-06-190309-0045.jpg" alt="實錄35" loading="lazy">
+												<img id="pic36" src="/uploads/1/2/4/5/124560042/10503-06-190309-0046.jpg" alt="實錄36" loading="lazy">
+												<img id="pic37" src="/uploads/1/2/4/5/124560042/10503-06-190309-0047.jpg" alt="實錄37" loading="lazy">
+												<img id="pic38" src="/uploads/1/2/4/5/124560042/10503-06-190309-0048.jpg" alt="實錄38" loading="lazy">
+												<img id="pic39" src="/uploads/1/2/4/5/124560042/10503-06-190309-0042.jpg" alt="實錄39" loading="lazy">
+												<img id="pic40" src="/uploads/1/2/4/5/124560042/10503-06-190309-0049.jpg" alt="實錄40" loading="lazy">
+												<img id="pic41" src="/uploads/1/2/4/5/124560042/10503-06-190309-0050.jpg" alt="實錄41" loading="lazy">
+												<img id="pic42" src="/uploads/1/2/4/5/124560042/10503-06-190309-0051.jpg" alt="實錄42" loading="lazy">
+												<img id="pic43" src="/uploads/1/2/4/5/124560042/10503-06-190309-0052.jpg" alt="實錄43" loading="lazy">
+												<img id="pic44" src="/uploads/1/2/4/5/124560042/10503-06-190309-0054.jpg" alt="實錄44" loading="lazy">
+												<img id="pic45" src="/uploads/1/2/4/5/124560042/10503-06-190309-0057.jpg" alt="實錄45" loading="lazy">
+												<img id="pic46" src="/uploads/1/2/4/5/124560042/10503-06-190309-0058.jpg" alt="實錄46" loading="lazy">
+												<img id="pic47" src="/uploads/1/2/4/5/124560042/10503-06-190309-0059.jpg" alt="實錄47" loading="lazy">
+												<img id="pic48" src="/uploads/1/2/4/5/124560042/10503-06-190309-0060.jpg" alt="實錄48" loading="lazy">
+												<img id="pic49" src="/uploads/1/2/4/5/124560042/10503-06-190309-0061.jpg" alt="實錄49" loading="lazy">
+												<img id="pic50" src="/uploads/1/2/4/5/124560042/10503-06-190309-0062.jpg" alt="實錄50" loading="lazy">
+												<img id="pic51" src="/uploads/1/2/4/5/124560042/10503-06-190309-0063.jpg" alt="實錄51" loading="lazy">
+												<img id="pic52" src="/uploads/1/2/4/5/124560042/10503-06-190309-0053.jpg" alt="實錄52" loading="lazy">
+												<img id="pic53" src="/uploads/1/2/4/5/124560042/10503-06-190309-0064.jpg" alt="實錄53" loading="lazy">
+												<img id="pic54" src="/uploads/1/2/4/5/124560042/10503-06-190309-0065.jpg" alt="實錄54" loading="lazy">
+												<img id="pic55" src="/uploads/1/2/4/5/124560042/line-album-251007-3.jpg" alt="實錄55" loading="lazy">
+												<img id="pic56" src="/uploads/1/2/4/5/124560042/line-album-251007-1.jpg" alt="實錄56" loading="lazy">
+											</div>
+											
+											<div class="thumb-scroll">
+												<a href="#pic1" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0038.jpg" alt="縮圖1"></a>
+												<a href="#pic2" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0004.jpg" alt="縮圖2"></a>
+												<a href="#pic3" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0005.jpg" alt="縮圖3"></a>
+												<a href="#pic4" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0007.jpg" alt="縮圖4"></a>
+												<a href="#pic5" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0008.jpg" alt="縮圖5"></a>
+												<a href="#pic6" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0010.jpg" alt="縮圖6"></a>
+												<a href="#pic7" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0040.jpg" alt="縮圖7"></a>
+												<a href="#pic8" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0012.jpg" alt="縮圖8"></a>
+												<a href="#pic9" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0013.jpg" alt="縮圖9"></a>
+												<a href="#pic10" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0018.jpg" alt="縮圖10"></a>
+												<a href="#pic11" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0019.jpg" alt="縮圖11"></a>
+												<a href="#pic12" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0020.jpg" alt="縮圖12"></a>
+												<a href="#pic13" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0021.jpg" alt="縮圖13"></a>
+												<a href="#pic14" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0022.jpg" alt="縮圖14"></a>
+												<a href="#pic15" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0055.jpg" alt="縮圖15"></a>
+												<a href="#pic16" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0023.jpg" alt="縮圖16"></a>
+												<a href="#pic17" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0003.jpg" alt="縮圖17"></a>
+												<a href="#pic18" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0024.jpg" alt="縮圖18"></a>
+												<a href="#pic19" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0025.jpg" alt="縮圖19"></a>
+												<a href="#pic20" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0027.jpg" alt="縮圖20"></a>
+												<a href="#pic21" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0028.jpg" alt="縮圖21"></a>
+												<a href="#pic22" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0029.jpg" alt="縮圖22"></a>
+												<a href="#pic23" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0030.jpg" alt="縮圖23"></a>
+												<a href="#pic24" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0031.jpg" alt="縮圖24"></a>
+												<a href="#pic25" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0032.jpg" alt="縮圖25"></a>
+												<a href="#pic26" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0034.jpg" alt="縮圖26"></a>
+												<a href="#pic27" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/line-album-251007-2.jpg" alt="縮圖27"></a>
+												<a href="#pic28" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0035.jpg" alt="縮圖28"></a>
+												<a href="#pic29" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0036.jpg" alt="縮圖29"></a>
+												<a href="#pic30" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0037.jpg" alt="縮圖30"></a>
+												<a href="#pic31" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0039.jpg" alt="縮圖31"></a>
+												<a href="#pic32" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0056.jpg" alt="縮圖32"></a>
+												<a href="#pic33" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0041.jpg" alt="縮圖33"></a>
+												<a href="#pic34" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0044.jpg" alt="縮圖34"></a>
+												<a href="#pic35" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0045.jpg" alt="縮圖35"></a>
+												<a href="#pic36" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0046.jpg" alt="縮圖36"></a>
+												<a href="#pic37" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0047.jpg" alt="縮圖37"></a>
+												<a href="#pic38" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0048.jpg" alt="縮圖38"></a>
+												<a href="#pic39" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0042.jpg" alt="縮圖39"></a>
+												<a href="#pic40" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0049.jpg" alt="縮圖40"></a>
+												<a href="#pic41" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0050.jpg" alt="縮圖41"></a>
+												<a href="#pic42" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0051.jpg" alt="縮圖42"></a>
+												<a href="#pic43" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0052.jpg" alt="縮圖43"></a>
+												<a href="#pic44" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0054.jpg" alt="縮圖44"></a>
+												<a href="#pic45" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0057.jpg" alt="縮圖45"></a>
+												<a href="#pic46" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0058.jpg" alt="縮圖46"></a>
+												<a href="#pic47" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0059.jpg" alt="縮圖47"></a>
+												<a href="#pic48" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0060.jpg" alt="縮圖48"></a>
+												<a href="#pic49" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0061.jpg" alt="縮圖49"></a>
+												<a href="#pic50" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0062.jpg" alt="縮圖50"></a>
+												<a href="#pic51" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0063.jpg" alt="縮圖51"></a>
+												<a href="#pic52" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0053.jpg" alt="縮圖52"></a>
+												<a href="#pic53" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0064.jpg" alt="縮圖53"></a>
+												<a href="#pic54" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/10503-06-190309-0065.jpg" alt="縮圖54"></a>
+												<a href="#pic55" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/line-album-251007-3.jpg" alt="縮圖55"></a>
+												<a href="#pic56" class="thumb-link"><img src="/uploads/1/2/4/5/124560042/line-album-251007-1.jpg" alt="縮圖56"></a>
+											</div>
+										</div>
 
-</div>
+										<div style="height:20px;overflow:hidden"></div>
+									</div>
 
-    </div>
-
-    <div class="footer-wrap">
-        <div class="footer">
-			<div style="display:none;">Create a <a target="_top" href="http:///">free web site</a> with <a target="_top" href="http:///" title="免費網站">Weebly</a></div>
+									<div style="text-align:center;">
+										<div style="height: 40px; overflow: hidden;"></div>
+										<a class="wsite-button wsite-button-small wsite-button-normal" href="/">
+											<span class="wsite-button-inner">回首頁</span>
+										</a>
+										<div style="height: 10px; overflow: hidden;"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-    </div><!-- end footer-wrap -->
-  </div><!-- /.wrapper -->
 
-  <div id="navMobile" class="nav mobile-nav">
-    <a class="hamburger" aria-label="Menu" href="#"><span></span></a>
-    <ul class="wsite-menu-default">
-    		<li id="pg779116127407485780" class="wsite-menu-item-wrap">
-    			<a
-    						href="https://qqschoolcarnivals.weebly.com/#intro"
-    				class="wsite-menu-item"
-    				>
-    				寒天小百科
-    			</a>
-    			
-    		</li>
-    		<li id="pg878235784932118454" class="wsite-menu-item-wrap">
-    			<a
-    						href="https://qqschoolcarnivals.weebly.com/#carnival"
-    				class="wsite-menu-item"
-    				>
-    				園遊會Q&A
-    			</a>
-    			
-    		</li>
-    		<li id="pg995898479738671965" class="wsite-menu-item-wrap">
-    			<a
-    						href="https://qqschoolcarnivals.weebly.com/#contact"
-    				class="wsite-menu-item"
-    				>
-    				園遊會訂購
-    			</a>
-    			
-    		</li>
-    		<li id="pg395223073860533859" class="wsite-menu-item-wrap">
-    			<a
-    						href="https://qqschoolcarnivals.weebly.com/#service"
-    				class="wsite-menu-item"
-    				>
-    				服務據點
-    			</a>
-    			
-    		</li>
-    </ul>
-  </div>
+		<div class="footer-wrap">
+			<div class="footer"></div>
+		</div>
+	</div>
 
-  <script type="text/javascript" src="files/theme/plugins.js"></script>
-  <script type="text/javascript" src="files/theme/custom.js"></script>
-    <div id="customer-accounts-app"></div>
-    <script src="http://cdn11.editmysite.com/js/site/main-customer-accounts-site.js?buildtime=1234"></script>
-
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136120499-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-136120499-1');
-</script>
+	<div id="navMobile" class="nav mobile-nav">
+		<a class="hamburger" aria-label="Menu" href="#"><span></span></a>
+		<ul class="wsite-menu-default">
+			<li class="wsite-menu-item-wrap"><a href="/#intro" class="wsite-menu-item">寒天小百科</a></li>
+			<li class="wsite-menu-item-wrap"><a href="/#carnival" class="wsite-menu-item">園遊會Q&A</a></li>
+			<li class="wsite-menu-item-wrap"><a href="/#contact" class="wsite-menu-item">園遊會訂購</a></li>
+			<li class="wsite-menu-item-wrap"><a href="/#service" class="wsite-menu-item">服務據點</a></li>
+		</ul>
+	</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // === Weebly 廣告隱藏邏輯 (保留) ===
+    // === Weebly 廣告隱藏邏輯 ===
     var adElement = document.getElementById('weebly-footer-signup-container-v3');
-    if (adElement) {
-        adElement.remove();
-        adElement.style.pointerEvents = 'none';
-        adElement.style.height = '0px';
-        adElement.style.visibility = 'hidden';
-    }
+    if (adElement) { adElement.remove(); }
 
-    // === 手機選單自動關閉邏輯 (保留) ===
+    // === 手機選單自動關閉邏輯 ===
     var anchorLinks = document.querySelectorAll('#navMobile a[href*="#"]');
     var hamburgerButton = document.querySelector('a.hamburger');
-
     if (anchorLinks.length > 0 && hamburgerButton) {
         anchorLinks.forEach(function(link) {
             link.addEventListener('click', function() {
                 setTimeout(function() {
                     hamburgerButton.click();
-                    document.body.classList.remove('nav-open'); 
-                    document.body.classList.remove('mobile-nav-open'); 
+                    document.body.classList.remove('nav-open', 'mobile-nav-open'); 
                 }, 50); 
             });
         });
     }
 
-    // =========================================================
-    // === 手機視差修復腳本 (Parallax Fix) (已註解/移除 - 避免背景模糊) ===
-    // =========================================================
-    /*
-    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
-    if (isMobile) {
-        var sections = document.querySelectorAll('.wsite-section'); 
-        sections.forEach(function(section) {
-            var bgImage = section.querySelector('.wsite-section-bg-image');
-            if (bgImage) {
-                bgImage.style.backgroundAttachment = 'scroll';
-                bgImage.style.setProperty('--bg-pos', bgImage.style.backgroundPositionY || '50%');
-                bgImage.classList.add('parallax-js-active');
-            }
-        });
-        function updateParallax() {
-            document.querySelectorAll('.parallax-js-active').forEach(function(bgImage) {
-                var section = bgImage.closest('.wsite-section');
-                if (!section) return;
-                var sectionTop = section.getBoundingClientRect().top;
-                var sectionHeight = section.offsetHeight;
-                var viewportHeight = window.innerHeight;
-                if (sectionTop < viewportHeight && sectionTop + sectionHeight > 0) {
-                    var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-                    var offset = section.offsetTop;
-                    var yPos = (scrollPosition - offset) * 0.3; 
-                    bgImage.style.backgroundPositionY = yPos + 'px';
-                }
-            });
-        }
-        window.addEventListener('scroll', updateParallax);
-        window.addEventListener('resize', updateParallax);
-        updateParallax();
-    }
-    */
-    // =========================================================
-    // === 5. 彈出視窗顯示與隱藏邏輯 (已修復狀態) ===
-    // =========================================================
+    // === 彈出公告視窗點擊強制關閉邏輯 ===
     var popup = document.getElementById('site-notice');
-    var POPUP_DELAY = 1000; // 延遲 1 秒顯示
-
-    // 關閉視窗的函式 - 使用 setProperty 設置 !important
-    function closePopup() {
-        if (popup) {
-            popup.style.setProperty('display', 'none', 'important');
-        }
-    }
-
-    // 顯示邏輯 - 使用 setProperty 設置 !important
-    if (popup) { 
-        var img = popup.querySelector('.notice-image');
-        if (img) {
-            var showPopup = function() {
-                // 強制使用 display: flex !important
-                setTimeout(function() { popup.style.setProperty('display', 'flex', 'important'); }, POPUP_DELAY);
-            };
-
-            if (img.complete) {
-                showPopup();
-            }  else {
-                img.onload = showPopup;
-                img.onerror = function() {
-                    console.error("Site notice image failed to load.");
-                };
-            }
-        }
-    }
-
-    // *** 最終修正: 在 document 級別監聽所有點擊，強制執行關閉 ***
     document.addEventListener('click', function(event) {
-        if (!popup || popup.style.display === 'none') {
-            return; // 彈窗不存在或已關閉則跳過
-        }
-        
-        // 1. 檢查是否點擊了 "X" 關閉按鈕 (.close-btn-notice) 或其子元素
+        if (!popup || popup.style.display === 'none') return;
         var isCloseButton = event.target.closest('.close-btn-notice');
-        
-        // 2. 檢查是否點擊了彈窗的最外層容器 (#site-notice) (即半透明背景)
         var isBackdrop = (event.target === popup);
-
-        // 如果點擊目標是關閉按鈕，或點擊了彈窗背景
         if (isCloseButton || isBackdrop) {
-            closePopup();
-            // 阻止事件傳播，避免 Weebly 腳本干擾
+            popup.style.setProperty('display', 'none', 'important');
             event.stopPropagation(); 
         }
-    }, true); // 使用 'true' 讓事件在捕獲階段就觸發，提高成功率
-
+    }, true);
 });
 </script>
 	</body>
