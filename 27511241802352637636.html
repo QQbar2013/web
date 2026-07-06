@@ -60,7 +60,155 @@
     to { opacity: 1; transform: scale(1); }
 }
 
-/* === 2. 純 CSS 幻燈片核心樣式 === */
+/* ==================== 全新導覽列結構樣式 ==================== */
+:root {
+  --nav-height: 70px;
+  --primary-color: #333;
+  --hover-color: #ff6600; 
+}
+
+.custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 99999 !important;
+}
+
+.nav-spacer {
+  height: var(--nav-height);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.nav-logo a {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.nav-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-menu li {
+  margin-left: 20px;
+}
+
+.nav-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+  padding: 10px 5px;
+  display: block;
+}
+
+.nav-link:hover {
+  color: var(--hover-color);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+}
+
+/* ==================== RWD 手機版導覽列樣式 ==================== */
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  .nav-menu li {
+    margin: 0;
+    text-align: center;
+  }
+
+  .nav-link {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .nav-toggle-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 100%;
+    padding: 10px;
+  }
+
+  .nav-toggle-label span,
+  .nav-toggle-label span::before,
+  .nav-toggle-label span::after {
+    display: block;
+    background: var(--primary-color);
+    height: 3px;
+    width: 25px;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .nav-toggle-label span::before,
+  .nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+  }
+
+  .nav-toggle-label span::before { top: -8px; }
+  .nav-toggle-label span::after { bottom: -8px; }
+
+  .nav-toggle:checked ~ .nav-menu {
+    max-height: 300px;
+  }
+
+  .nav-toggle:checked ~ .nav-toggle-label span {
+    background: transparent;
+  }
+
+  .nav-toggle:checked ~ .nav-toggle-label span::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .nav-toggle:checked ~ .nav-toggle-label span::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+}
+
+/* === 2. 幻燈片控制樣式 === */
 .gallery-container {
     max-width: 800px;
     margin: 0 auto;
@@ -80,25 +228,17 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* 保持原圖比例不變形 */
+    object-fit: contain; 
     opacity: 0;
     transition: opacity 0.4s ease-in-out;
     left: 0;
     top: 0;
-}
-/* 預設顯示第一張 */
-.main-stage img:first-child {
-    opacity: 1;
     z-index: 1;
 }
-/* 當縮圖錨點被觸發時，顯示對應圖片 */
-.main-stage img:target {
+/* 透過 JS 控管動態 active 顯示效果 */
+.main-stage img.active {
     opacity: 1;
     z-index: 2;
-}
-/* 隱藏非當前目標的其他目標圖 */
-.main-stage img:target ~ img:target {
-    opacity: 0;
 }
 
 /* 下方縮圖橫向捲軸區 */
@@ -109,7 +249,6 @@
     padding: 15px 5px;
     scroll-behavior: smooth;
 }
-/* 美化橫向滾動條 */
 .thumb-scroll::-webkit-scrollbar {
     height: 8px;
 }
@@ -129,9 +268,9 @@
     transition: all 0.2s;
     border: 2px solid transparent;
 }
-.thumb-link:hover, .thumb-link:focus {
+.thumb-link.active, .thumb-link:hover, .thumb-link:focus {
     opacity: 1;
-    border-color: #ff6b81; /* 亮色焦點外框 */
+    border-color: #ff6b81; 
 }
 .thumb-link img {
     width: 100%;
@@ -140,7 +279,7 @@
 }
 
 @media (max-width: 768px) {
-    .main-stage { height: 380px; } /* 手機端自適應縮減高度 */
+    .main-stage { height: 380px; } 
     .thumb-link { flex: 0 0 65px; height: 50px; }
 }
 </style>
@@ -154,23 +293,31 @@
 	<body class="no-header-page wsite-page-27511241802352637636 full-width-body-off header-overlay-on alt-nav-off wsite-theme-light">
 	<div class="wrapper">
 		
-		<!-- === 導覽列 === -->
-		<div class="birdseye-header">
-			<div class="nav-wrap">
-				<div class="container">
-					<div class="logo"><span class="wsite-logo"><a href="https://qqbar2013.github.io/web/index.html"><span id="wsite-title">話拳寒天Q棒</span></a></span></div>
-					<div class="nav desktop-nav">
-						<ul class="wsite-menu-default">
-							<li class="wsite-menu-item-wrap"><a href="https://qqbar2013.github.io/web/index.html#intro" class="wsite-menu-item">寒天小百科</a></li>
-							<li class="wsite-menu-item-wrap"><a href="https://qqbar2013.github.io/web/index.html#carnival" class="wsite-menu-item">園遊會Q&A</a></li>
-							<li class="wsite-menu-item-wrap"><a href="https://qqbar2013.github.io/web/index.html#contact" class="wsite-menu-item">園遊會訂購</a></li>
-							<li class="wsite-menu-item-wrap"><a href="https://qqbar2013.github.io/web/index.html#service" class="wsite-menu-item">服務據點</a></li>
-						</ul>
-					</div>
-					<a class="hamburger" aria-label="Menu" href="#"><span></span></a>
-				</div>
+		<!-- === 全新精簡響應式導覽列（跨頁絕對網址版） === -->
+		<header class="custom-navbar">
+		  <div class="nav-container">
+			<div class="nav-logo">
+			  <a href="https://qqbar2013.github.io/web/index.html">話拳寒天Q棒</a>
 			</div>
-		</div>
+			
+			<input type="checkbox" id="nav-toggle" class="nav-toggle">
+			<label for="nav-toggle" class="nav-toggle-label">
+			  <span></span>
+			</label>
+			
+			<nav class="nav-menu">
+			  <ul>
+				<li><a href="https://qqbar2013.github.io/web/index.html#intro" class="nav-link">寒天小百科</a></li>
+				<li><a href="https://qqbar2013.github.io/web/index.html#carnival" class="nav-link">園遊會Q&A</a></li>
+				<li><a href="https://qqbar2013.github.io/web/index.html#contact" class="nav-link">園遊會訂購</a></li>
+				<li><a href="https://qqbar2013.github.io/web/index.html#service" class="nav-link">服務據點</a></li>
+			  </ul>
+			</nav>
+		  </div>
+		</header>
+
+		<!-- 導覽列頂部緩衝區塊 -->
+		<div class="nav-spacer"></div>
 
 		<div class="main-wrap">
 			<div id="wsite-content" class="wsite-elements wsite-not-footer">
@@ -184,12 +331,12 @@
 									<div>
 										<div style="height:20px;overflow:hidden"></div>
 										
-										<!-- === 核心：純 HTML/CSS 幻燈片組件 === -->
+										<!-- === 核心：幻燈片組件 === -->
 										<div class="gallery-container">
 											
 											<!-- 1. 大圖舞台 -->
-											<div class="main-stage">
-												<img id="pic1" src="https://qqbar2013.github.io/web/uploads/1/2/4/5/124560042/10503-06-190309-0038.jpg" alt="實錄1">
+											<div class="main-stage" id="main-stage">
+												<img id="pic1" class="active" src="https://qqbar2013.github.io/web/uploads/1/2/4/5/124560042/10503-06-190309-0038.jpg" alt="實錄1">
 												<img id="pic2" src="https://qqbar2013.github.io/web/uploads/1/2/4/5/124560042/10503-06-190309-0004.jpg" alt="實錄2" loading="lazy">
 												<img id="pic3" src="https://qqbar2013.github.io/web/uploads/1/2/4/5/124560042/10503-06-190309-0005.jpg" alt="實錄3" loading="lazy">
 												<img id="pic4" src="https://qqbar2013.github.io/web/uploads/1/2/4/5/124560042/10503-06-190309-0007.jpg" alt="實錄4" loading="lazy">
@@ -248,8 +395,8 @@
 											</div>
 											
 											<!-- 2. 下方橫向滑動縮圖清單 -->
-											<div class="thumb-scroll">
-												<a href="#pic1" class="thumb-link"><img src="https://qqbar2013.github.io/web/uploads/1/2/4/5/124560042/10503-06-190309-0038.jpg" alt="縮圖1"></a>
+											<div class="thumb-scroll" id="thumb-scroll">
+												<a href="#pic1" class="thumb-link active"><img src="https://qqbar2013.github.io/web/uploads/1/2/4/5/124560042/10503-06-190309-0038.jpg" alt="縮圖1"></a>
 												<a href="#pic2" class="thumb-link"><img src="https://qqbar2013.github.io/web/uploads/1/2/4/5/124560042/10503-06-190309-0004.jpg" alt="縮圖2"></a>
 												<a href="#pic3" class="thumb-link"><img src="https://qqbar2013.github.io/web/uploads/1/2/4/5/124560042/10503-06-190309-0005.jpg" alt="縮圖3"></a>
 												<a href="#pic4" class="thumb-link"><img src="https://qqbar2013.github.io/web/uploads/1/2/4/5/124560042/10503-06-190309-0007.jpg" alt="縮圖4"></a>
@@ -313,7 +460,6 @@
 
 									<div style="text-align:center;">
 										<div style="height: 40px; overflow: hidden;"></div>
-										<!-- === 修正：回首頁網址設定為 GitHub Pages 首頁 === -->
 										<a class="wsite-button wsite-button-small wsite-button-normal" href="https://qqbar2013.github.io/web/index.html">
 											<span class="wsite-button-inner">回首頁</span>
 										</a>
@@ -332,38 +478,25 @@
 		</div>
 	</div>
 
-	<!-- === 手機側邊導覽列 === -->
-	<div id="navMobile" class="nav mobile-nav">
-		<a class="hamburger" aria-label="Menu" href="#"><span></span></a>
-		<ul class="wsite-menu-default">
-			<li class="wsite-menu-item-wrap"><a href="https://qqbar2013.github.io/web/index.html#intro" class="wsite-menu-item">寒天小百科</a></li>
-			<li class="wsite-menu-item-wrap"><a href="https://qqbar2013.github.io/web/index.html#carnival" class="wsite-menu-item">園遊會Q&A</a></li>
-			<li class="wsite-menu-item-wrap"><a href="https://qqbar2013.github.io/web/index.html#contact" class="wsite-menu-item">園遊會訂購</a></li>
-			<li class="wsite-menu-item-wrap"><a href="https://qqbar2013.github.io/web/index.html#service" class="wsite-menu-item">服務據點</a></li>
-		</ul>
-	</div>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // === 移除 Weebly 相關廣告殘留 ===
+    // === 1. 移除 Weebly 相關廣告殘留 ===
     var adElement = document.getElementById('weebly-footer-signup-container-v3');
     if (adElement) { adElement.remove(); }
 
-    // === 手機選單自動關閉邏輯 ===
-    var anchorLinks = document.querySelectorAll('#navMobile a[href*="#"]');
-    var hamburgerButton = document.querySelector('a.hamburger');
-    if (anchorLinks.length > 0 && hamburgerButton) {
-        anchorLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-                setTimeout(function() {
-                    hamburgerButton.click();
-                    document.body.classList.remove('nav-open', 'mobile-nav-open'); 
-                }, 50); 
-            });
-        });
-    }
+    // === 2. 全新手機選單點擊自動關閉邏輯 ===
+    var navLinks = document.querySelectorAll('.nav-link');
+    var navToggle = document.getElementById('nav-toggle');
 
-    // === 彈出公告視窗點擊強制關閉邏輯 ===
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            if (navToggle) {
+                navToggle.checked = false; 
+            }
+        });
+    });
+
+    // === 3. 彈出公告視窗點擊強制關閉邏輯 ===
     var popup = document.getElementById('site-notice');
     document.addEventListener('click', function(event) {
         if (!popup || popup.style.display === 'none') return;
@@ -374,6 +507,64 @@ document.addEventListener('DOMContentLoaded', function() {
             event.stopPropagation(); 
         }
     }, true);
+
+    // === 4. 每 1.5 秒自動播放照片 + 縮圖連動機制 ===
+    var mainImages = document.querySelectorAll('#main-stage img');
+    var thumbLinks = document.querySelectorAll('#thumb-scroll .thumb-link');
+    var thumbContainer = document.getElementById('thumb-scroll');
+    var currentIndex = 0;
+    var totalImages = mainImages.length;
+    var playInterval;
+
+    // 切換到指定索引照片的函式
+    function changeSlide(index) {
+        // 移除目前所有 active 狀態
+        mainImages.forEach(function(img) { img.classList.remove('active'); });
+        thumbLinks.forEach(function(lnk) { lnk.classList.remove('active'); });
+
+        // 設定新索引的 active 狀態
+        mainImages[index].classList.add('active');
+        thumbLinks[index].classList.add('active');
+
+        // 讓下方縮圖捲軸自動對齊到目前 active 的縮圖
+        var targetThumb = thumbLinks[index];
+        if (thumbContainer && targetThumb) {
+            var containerWidth = thumbContainer.clientWidth;
+            var thumbLeft = targetThumb.offsetLeft;
+            var thumbWidth = targetThumb.clientWidth;
+            // 計算置中滾動位置
+            thumbContainer.scrollLeft = thumbLeft - (containerWidth / 2) + (thumbWidth / 2);
+        }
+        currentIndex = index;
+    }
+
+    // 啟動定時器（1.5 秒播放一次）
+    function startAutoPlay() {
+        playInterval = setInterval(function() {
+            var nextIndex = (currentIndex + 1) % totalImages;
+            changeSlide(nextIndex);
+        }, 1500);
+    }
+
+    // 停止定時器
+    function stopAutoPlay() {
+        clearInterval(playInterval);
+    }
+
+    // 為下方每個縮圖綁定點擊事件
+    thumbLinks.forEach(function(link, index) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // 阻擋原生 # 網址錨點跳轉，改用 JS 平滑處理
+            stopAutoPlay();     // 使用者點擊時先暫停自動播放
+            changeSlide(index); // 切換照片
+            startAutoPlay();    // 重新計時自動播放
+        });
+    });
+
+    // 啟動自動播放
+    if (totalImages > 0) {
+        startAutoPlay();
+    }
 });
 </script>
 	</body>
