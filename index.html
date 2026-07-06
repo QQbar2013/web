@@ -183,61 +183,71 @@ sub {
   }
 }
 
-/* 彈出視窗背景與定位 */
+/* ==================== 完美修復：公告彈出視窗自適應樣式 ==================== */
 #site-notice {
     position: fixed;
-    z-index: 1000000 !important; /* 極高 z-index，防止被遮擋 */
+    z-index: 1000000 !important;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.6); 
-    display: none; /* 預設為隱藏 */
+    background-color: rgba(0, 0, 0, 0.7); 
+    display: none; 
     justify-content: center;
     align-items: center;
     padding: 20px;
+    box-sizing: border-box;
 }
 
-/* 視窗主體樣式 */
+/* 修正電腦版主體容器，確保不超出螢幕高度 */
 .notice-content {
     background-color: #fefefe;
-    margin: auto;
-    padding: 0;
     border-radius: 10px;
     width: 90%; 
     max-width: 450px; 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-height: 85vh; /* 限制最高為螢幕高度的 85%，防止電腦版比例跑掉 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     position: relative;
     overflow: hidden; 
-    animation: fadeIn 0.3s; 
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.3s ease-out; 
 }
 
-/* 讓圖片自動縮放符合視窗，且保持比例 */
+/* 修正圖片縮放，確保寬高不失真也不擠壓範圍 */
 .notice-image {
     display: block;
     width: 100%; 
-    height: auto; 
+    height: auto;
+    max-height: 85vh;
+    object-fit: contain;
 }
 
-/* 關閉按鈕 */
+/* 修正關閉按鈕：加上黑底圈與顯眼配色，確保在電腦版絕對找得到、點得到 */
 .close-btn-notice {
-    color: #aaa;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.5); 
     position: absolute;
-    top: 5px; 
-    right: 10px;
-    font-size: 32px;
+    top: 12px; 
+    right: 12px;
+    font-size: 24px;
     font-weight: bold;
     cursor: pointer;
     line-height: 1;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8); 
-    z-index: 1000000;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000002;
+    transition: background-color 0.2s, transform 0.2s;
+    user-select: none;
 }
 
-.close-btn-notice:hover,
-.close-btn-notice:focus {
-    color: #fff;
-    text-decoration: none;
+.close-btn-notice:hover {
+    background-color: rgba(255, 102, 0, 0.9); /* 滑過時轉為亮橘色 */
+    transform: scale(1.05);
 }
 
 /* 動畫效果 */
@@ -250,6 +260,14 @@ sub {
 @media (max-width: 600px) {
     .notice-content {
         width: 95%;
+        max-height: 80vh;
+    }
+    .close-btn-notice {
+        top: 8px;
+        right: 8px;
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
     }
 }
 </style>
@@ -368,6 +386,7 @@ var STYLE_PREFIX = 'wsite';
 			<div class="wsite-section-elements">
 				<div><div id="921721684395224628" align="left" style="width: 100%; overflow-y: hidden;" class="wcustomhtml"><div id="site-notice" style="display:none;">
     <div class="notice-content">
+        <!-- 修正：顯眼的獨立半透明圓形關閉按鈕 -->
         <span class="close-btn-notice">&times;</span>
         
         <img src="https://github.com/QQbar2013/web/blob/main/announcement/20260707.jpg?raw=true" alt="近期重要公告" class="notice-image">
