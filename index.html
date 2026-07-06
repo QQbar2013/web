@@ -14,7 +14,19 @@
 
 
 <style>
-
+/* 強制修復 HTML 原生上標與下標樣式 */
+sup, sub {
+    font-size: 75% !important;
+    line-height: 0 !important;
+    position: relative !important;
+    vertical-align: baseline !important;
+}
+sup {
+    top: -0.5em !important;
+}
+sub {
+    bottom: -0.25em !important;
+}
 /* 彈出視窗背景與定位 */
 
 #site-notice {
