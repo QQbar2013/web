@@ -183,7 +183,7 @@ sub {
   }
 }
 
-/* ==================== 完美修復：公告彈出視窗自適應樣式 ==================== */
+/* ==================== 完美自適應：公告彈出視窗樣式調整 ==================== */
 #site-notice {
     position: fixed;
     z-index: 1000000 !important;
@@ -199,55 +199,59 @@ sub {
     box-sizing: border-box;
 }
 
-/* 修正電腦版主體容器，確保不超出螢幕高度 */
+/* 白底主容器：改為 inline-block 緊貼圖片，確保寬高同步 */
 .notice-content {
     background-color: #fefefe;
-    border-radius: 10px;
-    width: 90%; 
-    max-width: 450px; 
-    max-height: 85vh; /* 限制最高為螢幕高度的 85%，防止電腦版比例跑掉 */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    width: auto; 
+    max-width: 90%; 
+    max-height: 80vh; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     position: relative;
-    overflow: hidden; 
+    overflow: visible; /* 允許關閉按鈕適度外浮 */
     display: flex;
-    flex-direction: column;
-    animation: fadeIn 0.3s ease-out; 
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
-/* 修正圖片縮放，確保寬高不失真也不擠壓範圍 */
+/* 圖片本體：限制最大高度與寬度，使其不變形 */
 .notice-image {
     display: block;
-    width: 100%; 
+    width: auto;
     height: auto;
-    max-height: 85vh;
+    max-width: 100%;
+    max-height: 80vh;
     object-fit: contain;
+    border-radius: 12px;
 }
 
-/* 修正關閉按鈕：加上黑底圈與顯眼配色，確保在電腦版絕對找得到、點得到 */
+/* 關閉按鈕：固定在外層白框右上角稍微往外浮動，保證不被圖片遮擋且不會跑版 */
 .close-btn-notice {
-    color: #ffffff;
-    background-color: rgba(0, 0, 0, 0.5); 
+    color: #ffffff !important;
+    background-color: rgba(0, 0, 0, 0.6) !important; 
     position: absolute;
-    top: 12px; 
-    right: 12px;
-    font-size: 24px;
+    top: -15px; 
+    right: -15px;
+    font-size: 22px;
     font-weight: bold;
     cursor: pointer;
     line-height: 1;
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000002;
+    z-index: 1000005 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     transition: background-color 0.2s, transform 0.2s;
     user-select: none;
 }
 
 .close-btn-notice:hover {
-    background-color: rgba(255, 102, 0, 0.9); /* 滑過時轉為亮橘色 */
-    transform: scale(1.05);
+    background-color: rgba(255, 102, 0, 1) !important; 
+    transform: scale(1.1);
 }
 
 /* 動畫效果 */
@@ -256,18 +260,21 @@ sub {
     to { opacity: 1; transform: scale(1); }
 }
 
-/* 手機適應 */
+/* 手機版微調 */
 @media (max-width: 600px) {
     .notice-content {
-        width: 95%;
-        max-height: 80vh;
+        max-width: 95%;
+        max-height: 75vh;
+    }
+    .notice-image {
+        max-height: 75vh;
     }
     .close-btn-notice {
-        top: 8px;
-        right: 8px;
-        width: 32px;
-        height: 32px;
-        font-size: 20px;
+        top: -10px;
+        right: -10px;
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
     }
 }
 </style>
@@ -386,9 +393,8 @@ var STYLE_PREFIX = 'wsite';
 			<div class="wsite-section-elements">
 				<div><div id="921721684395224628" align="left" style="width: 100%; overflow-y: hidden;" class="wcustomhtml"><div id="site-notice" style="display:none;">
     <div class="notice-content">
-        <!-- 修正：顯眼的獨立半透明圓形關閉按鈕 -->
+        <!-- 修正：關閉按鈕移動至容器邊界外上緣，永不跑位 -->
         <span class="close-btn-notice">&times;</span>
-        
         <img src="https://github.com/QQbar2013/web/blob/main/announcement/20260707.jpg?raw=true" alt="近期重要公告" class="notice-image">
     </div>
 </div></div>
@@ -555,10 +561,10 @@ var STYLE_PREFIX = 'wsite';
     z-index: 1000;
     display: block;
     width: 80px; 
-    height: 80px; /* 寬高一致才能圓形 */
-    border-radius: 50%; /* 圓形化 */
+    height: 80px; 
+    border-radius: 50%; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    overflow: hidden; /* 裁剪掉超出圓形邊界的部分 */
+    overflow: hidden; 
 }
 
 /* 圖片自動縮放去符合容器 */
@@ -574,8 +580,8 @@ var STYLE_PREFIX = 'wsite';
     .line-float-btn {
         bottom: 15px;
         right: 15px;
-        width: 60px; /* 手機版尺寸 */
-        height: 60px; /* 必須相同 */
+        width: 60px; 
+        height: 60px; 
     }
 }
 </style></div>
@@ -647,7 +653,7 @@ document.addEventListener('DOMContentLoaded', function() {
     navLinks.forEach(function(link) {
         link.addEventListener('click', function() {
             if (navToggle) {
-                navToggle.checked = false; // 點擊選單項目後，自動取消勾選以收合手機選單
+                navToggle.checked = false; 
             }
         });
     });
