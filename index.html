@@ -404,12 +404,11 @@ var STYLE_PREFIX = 'wsite';
 	.wsite-image img { height: auto; }
 	.seo-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0 0; padding: 0; list-style: none; }
 	.seo-facts li { padding: 12px; border-radius: 12px; background: #fff4e9; font-weight: 700; }
-	.seo-stats { text-align: center; }
+	.seo-stats { max-width: 640px; text-align: center; }
 	.section-anchor { scroll-margin-top: 90px; }
-	.seo-stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+	.seo-stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
 	.seo-stat-card { aspect-ratio: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px; box-sizing: border-box; border: 2px solid #ffd8ba; border-radius: 18px; background: linear-gradient(145deg, #fff9f4, #fff0e3); box-shadow: 0 5px 16px rgba(232,93,4,.12); }
 	.seo-stat-card strong { color: #e85d04; font-size: clamp(27px, 3vw, 38px); line-height: 1.1; white-space: nowrap; }
-	.seo-stat-card.long strong { font-size: clamp(24px, 2.5vw, 32px); }
 	.seo-stat-card span { margin-top: 8px; color: #333; font-size: 17px; font-weight: 700; line-height: 1.35; }
 	@media (max-width: 700px) {
 	  .seo-hero, .seo-copy, .seo-stats { margin: 14px 10px; padding: 18px; }
@@ -417,7 +416,6 @@ var STYLE_PREFIX = 'wsite';
 	  .seo-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 	  .seo-stat-card { padding: 10px; border-radius: 15px; }
 	  .seo-stat-card strong { font-size: clamp(25px, 8vw, 32px); }
-	  .seo-stat-card.long strong { font-size: clamp(21px, 6.2vw, 25px); }
 	  .seo-stat-card span { font-size: 15px; }
 	}
 	</style>
@@ -501,10 +499,10 @@ var STYLE_PREFIX = 'wsite';
 <section class="seo-stats" aria-labelledby="intro-title">
   <h2 id="intro-title">園遊會服務實績</h2>
   <div class="seo-stat-grid">
-    <div class="seo-stat-card"><strong>14 年</strong><span>營業</span></div>
-    <div class="seo-stat-card"><strong>26 個</strong><span>學期</span></div>
-    <div class="seo-stat-card long"><strong>500 間以上</strong><span>學校</span></div>
-    <div class="seo-stat-card long"><strong>4,000 個以上</strong><span>活動單位</span></div>
+    <div class="seo-stat-card"><strong>14 年</strong><span>服務經驗</span></div>
+    <div class="seo-stat-card"><strong>200+</strong><span>家庭日</span></div>
+    <div class="seo-stat-card"><strong>800+</strong><span>學校</span></div>
+    <div class="seo-stat-card"><strong>4000+</strong><span>服務單位</span></div>
   </div>
 </section>
 
