@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>園遊會器具租借問與答｜寒天Q棒保冷準備</title>
-  <meta name="description" content="家中冷藏空間不足怎麼辦？整理園遊會保冷器材租借門檻、前一天取貨、保冷劑與炎熱天氣加強冰度等常見問題。">
+  <meta name="description" content="園遊會保冷箱怎麼運送與歸還？整理隔天保鮮、箱子尺寸、適合推車、汽車運送、器材歸還與押金退回等常見問題。">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://qqbar2013.github.io/web/school-carnival-products.html">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_TW">
   <meta property="og:site_name" content="話拳寒天Q棒">
   <meta property="og:title" content="園遊會器具租借問與答｜寒天Q棒保冷準備">
-  <meta property="og:description" content="園遊會保冷器材租借、前一天取貨與炎熱天氣保冷方式常見問題。">
+  <meta property="og:description" content="園遊會保冷箱尺寸、適合推車、汽車運送、器材歸還與押金退回常見問題。">
   <meta property="og:url" content="https://qqbar2013.github.io/web/school-carnival-products.html">
-  <meta property="og:image" content="https://qqbar2013.github.io/web/uploads/1/2/4/5/124560042/q5-2_orig.webp?v=20261004">
+  <meta property="og:image" content="https://qqbar2013.github.io/web/uploads/1/2/4/5/124560042/cart-long-platform.webp">
   <style>
     :root { --orange:#e85d04; --ink:#292929; --soft:#fff5ec; --line:#ffd7b8; }
     * { box-sizing:border-box; }
@@ -46,6 +46,17 @@
     .faq-item { padding:20px; background:var(--soft); border:1px solid var(--line); border-radius:14px; }
     .faq-item h2 { margin:0 0 8px; font-size:clamp(21px,3vw,26px); }
     .faq-item p { margin:0; }
+    .cart-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:18px; }
+    .cart-card { position:relative; overflow:hidden; margin:0; background:#fff; border:3px solid; border-radius:16px; }
+    .cart-card.good { border-color:#28a745; }
+    .cart-card.bad { border-color:#dc3545; }
+    .cart-card img { display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; }
+    .cart-card figcaption { padding:8px 10px; text-align:center; font-weight:800; }
+    .cart-mark { position:absolute; top:10px; right:10px; display:grid; width:58px; height:58px; place-items:center; color:#fff; border:5px solid #fff; border-radius:50%; box-shadow:0 2px 8px rgba(0,0,0,.2); font-size:32px; font-weight:900; line-height:1; }
+    .good .cart-mark { background:#28a745; }
+    .bad .cart-mark { background:#dc3545; }
+    .return-highlight { margin-top:34px; padding:28px; text-align:center; background:#fff0e3; border:3px solid var(--orange); border-radius:18px; box-shadow:0 8px 24px rgba(232,93,4,.12); }
+    .return-highlight strong { display:block; color:#b94400; font-size:clamp(26px,4vw,36px); line-height:1.5; }
     .note { border-left:5px solid var(--orange); }
     footer { padding:24px 20px; text-align:center; color:#666; border-top:1px solid #eee; background:#fff; }
     @media (max-width:700px) {
@@ -54,6 +65,7 @@
       main { padding:16px 12px 40px; }
       article section { padding:20px; }
       .faq-item { padding:17px; }
+      .cart-grid { grid-template-columns:1fr; }
     }
   </style>
   <script type="application/ld+json">
@@ -61,27 +73,37 @@
     "@context":"https://schema.org",
     "@type":"FAQPage",
     "name":"園遊會器具租借問與答",
-    "description":"園遊會保冷器材租借、前一天取貨與炎熱天氣保冷方式常見問題。",
+    "description":"園遊會保冷箱尺寸、適合推車、汽車運送、器材歸還與押金退回常見問題。",
     "mainEntity":[
       {
         "@type":"Question",
         "name":"家中沒有足夠的冷藏空間怎麼辦？",
-        "acceptedAnswer":{"@type":"Answer","text":"訂購 180 支以上可詢問租借保冷器材。前一天取貨回家不需冷藏，整箱平放即可。"}
+        "acceptedAnswer":{"@type":"Answer","text":"訂購 180 支以上會統一以保冷箱出貨。前一天取貨後回家不需冷藏，整箱平放於陰涼處即可。"}
       },
       {
         "@type":"Question",
-        "name":"保冷劑可以保冷到隔天嗎？",
-        "acceptedAnswer":{"@type":"Answer","text":"保冷器材內的保冷劑足夠隔天保鮮，前一天取貨後將整箱平放即可。"}
+        "name":"這樣隔天打開新鮮嗎？",
+        "acceptedAnswer":{"@type":"Answer","text":"是的，箱內有保冷劑會讓Q棒保持新鮮至隔天；若想讓客人吃冰一點，可以在活動前放入有包裝的冰塊，讓它更保冷。"}
       },
       {
         "@type":"Question",
-        "name":"活動當天天氣炎熱怎麼加強冰度？",
-        "acceptedAnswer":{"@type":"Answer","text":"若希望販售時讓客人吃冰一點，可以準備冰塊放進保麗龍箱裡，加強冰度。"}
+        "name":"箱子很大嗎？",
+        "acceptedAnswer":{"@type":"Answer","text":"箱子大小為 69 × 47 × 19 cm，若家裡有推車建議帶推車來。"}
       },
       {
         "@type":"Question",
-        "name":"如何詢問保冷器材租借？",
-        "acceptedAnswer":{"@type":"Answer","text":"透過 LINE 提供學校名稱、所在縣市、活動日期、預計數量及希望的取貨地點，由園遊會負責人確認器材與取貨安排。"}
+        "name":"什麼樣的推車可以？",
+        "acceptedAnswer":{"@type":"Answer","text":"請帶長板推車，可以保持果凍平穩地推出去，較不會有脫模、翻覆的風險。"}
+      },
+      {
+        "@type":"Question",
+        "name":"摩托車可以載嗎？",
+        "acceptedAnswer":{"@type":"Answer","text":"不行，運送一定要開車來。"}
+      },
+      {
+        "@type":"Question",
+        "name":"有什麼東西要歸還？",
+        "acceptedAnswer":{"@type":"Answer","text":"出借的東西除了Q棒售出以外，其他都要歸還。到時會提供物品核對清單以供核對。"}
       }
     ]
   }
@@ -114,7 +136,7 @@
       <div class="hero-copy">
         <p class="eyebrow">園遊會保冷與器具準備</p>
         <h1>園遊會器具租借問與答</h1>
-        <p class="lead">家中冰箱放不下怎麼辦？前一天取貨需要冷藏嗎？這裡整理保冷器材租借與活動當天保冷的常見問題。</p>
+        <p class="lead">家中冰箱放不下怎麼辦？保冷箱怎麼運送與歸還？這裡整理取貨前最常遇到的器具問題。</p>
         <div class="actions">
           <a class="button" href="#rental-faq">查看器具問答</a>
           <a class="button secondary" href="https://line.me/R/ti/p/@qqbar">用 LINE 詢問租借</a>
@@ -127,39 +149,57 @@
         <div class="faq-list">
           <div class="faq-item">
             <h2>家中沒有足夠的冷藏空間怎麼辦？</h2>
-            <p>訂購 180 支以上可詢問租借保冷器材。前一天取貨回家不需冷藏，整箱平放即可。</p>
+            <p>訂購 180 支以上會統一以保冷箱出貨。前一天取貨後回家不需冷藏，整箱平放於陰涼處即可。</p>
           </div>
           <div class="faq-item">
-            <h2>保冷劑可以保冷到隔天嗎？</h2>
-            <p>保冷器材內的保冷劑足夠隔天保鮮，前一天取貨後將整箱平放即可。</p>
+            <h2>這樣隔天打開新鮮嗎？</h2>
+            <p>是的，箱內有保冷劑會讓Q棒保持新鮮至隔天，若想讓客人吃冰一點的話，可以在活動前放入有包裝的冰塊，讓它更保冷喔。</p>
           </div>
           <div class="faq-item">
-            <h2>活動當天天氣炎熱怎麼加強冰度？</h2>
-            <p>若希望販售時讓客人吃冰一點，可以準備冰塊放進保麗龍箱裡，加強冰度。</p>
+            <h2>箱子很大嗎？</h2>
+            <p>箱子大小為：69 × 47 × 19 cm，若家裡有推車建議帶推車來喔。</p>
           </div>
           <div class="faq-item">
-            <h2>如何詢問保冷器材租借？</h2>
-            <p>透過 LINE 提供學校名稱、所在縣市、活動日期、預計數量及希望的取貨地點，由園遊會負責人確認器材與取貨安排。</p>
+            <h2>什麼樣的推車可以？</h2>
+            <p>請帶長板推車，可以保持果凍平穩地推出去，較不會有脫模、翻覆的風險。</p>
+            <div class="cart-grid" aria-label="適合與不適合的推車比較">
+              <figure class="cart-card good">
+                <span class="cart-mark" aria-hidden="true">✓</span>
+                <img src="uploads/1/2/4/5/124560042/cart-long-platform.webp" width="480" height="480" alt="適合使用的長板推車" loading="lazy" decoding="async">
+                <figcaption>長板推車：適合</figcaption>
+              </figure>
+              <figure class="cart-card bad">
+                <span class="cart-mark" aria-hidden="true">×</span>
+                <img src="uploads/1/2/4/5/124560042/cart-hand-truck.webp" width="480" height="480" alt="不適合使用的直立式手推車" loading="lazy" decoding="async">
+                <figcaption>直立式手推車：不適合</figcaption>
+              </figure>
+              <figure class="cart-card bad">
+                <span class="cart-mark" aria-hidden="true">×</span>
+                <img src="uploads/1/2/4/5/124560042/cart-folding-box.webp" width="480" height="480" alt="不適合使用的折疊箱推車" loading="lazy" decoding="async">
+                <figcaption>折疊箱推車：不適合</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h2>摩托車可以載嗎？</h2>
+            <p>不行。運送一定要開車來喔。</p>
+          </div>
+          <div class="faq-item">
+            <h2>有什麼東西要歸還？</h2>
+            <p>出借的東西除了Q棒售出以外，其他都要歸還喔。到時會提供物品核對清單以供核對。</p>
           </div>
         </div>
       </section>
 
-      <section>
-        <h2>詢問租借前可以先準備</h2>
-        <ul class="checklist">
-          <li>學校名稱與所在縣市</li>
-          <li>園遊會活動日期</li>
-          <li>預計訂購數量</li>
-          <li>希望的取貨地點</li>
-        </ul>
-        <p>完整地址與地圖可至<a href="address.html">取貨地點頁</a>查看。實際器材租借與取貨安排，以聯絡時確認的內容為準。</p>
-      </section>
+      <aside class="return-highlight" aria-label="器具歸還重要提醒">
+        <strong>請於活動結束當日送回約定地點，即可退回押金喔。</strong>
+      </aside>
 
       <section class="note">
-        <h2>詢問器具租借</h2>
-        <p>準備好活動資料與預計數量後，可直接加入 LINE 與園遊會負責人聯絡。</p>
+        <h2>聯絡我們</h2>
+        <p>有任何想了解的，可直接加入 LINE 與園遊會負責人聯絡喔。</p>
         <div class="actions">
-          <a class="button" href="https://line.me/R/ti/p/@qqbar">加入 LINE 詢問租借</a>
+          <a class="button" href="https://line.me/R/ti/p/@qqbar">加入 LINE 租借</a>
           <a class="button secondary" href="27511241802352637636.html">查看歷年園遊會實錄</a>
         </div>
       </section>
