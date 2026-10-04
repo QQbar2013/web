@@ -19,9 +19,15 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://qqbar2013.github.io/web/school-carnival-products.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <loc>https://qqbar2013.github.io/web/school-carnival-guide.html</loc>
+    <lastmod>2026-10-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://qqbar2013.github.io/web/equipment-rental-faq.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
