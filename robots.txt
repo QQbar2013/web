@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://qqbar2013.github.io/web/sitemap.xml
+Sitemap: https://qqbar2013.github.io/web/sitemap-pages.xml
