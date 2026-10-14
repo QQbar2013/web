@@ -35,6 +35,7 @@
     .eyebrow { margin:0 0 6px; color:var(--orange); font-weight:800; letter-spacing:.08em; }
     h1 { margin:0; font-size:clamp(30px,5vw,48px); line-height:1.25; }
     .lead { margin:16px 0 0; font-size:19px; }
+    .byline { margin:12px 0 0; color:#6b625c; font-size:15px; }
     .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
     .button { display:inline-block; padding:11px 20px; border-radius:999px; background:var(--orange); color:#fff; font-weight:800; text-decoration:none; }
     .button.secondary { color:#333; background:#fff; border:2px solid var(--line); padding:9px 18px; }
@@ -54,6 +55,13 @@
     .choice-card { padding:20px; background:var(--soft); border:1px solid var(--line); border-radius:15px; }
     .choice-card h3 { color:#9d3f08; }
     .choice-card p { margin-bottom:0; }
+    .answer-box { border-top:5px solid var(--orange); }
+    .comparison-wrap { margin-top:18px; overflow-x:auto; }
+    .comparison-table { width:100%; min-width:680px; border-collapse:collapse; background:#fff; }
+    .comparison-table th, .comparison-table td { padding:12px 13px; border:1px solid var(--line); text-align:left; vertical-align:top; }
+    .comparison-table th { color:#713000; background:var(--soft); }
+    .comparison-table tbody tr:first-child { background:#fff9f3; }
+    .comparison-note { color:#665b54; font-size:14px; }
     .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:18px; }
     .stat { padding:18px 10px; text-align:center; background:var(--soft); border:1px solid var(--line); border-radius:14px; }
     .stat strong { display:block; color:var(--orange); font-size:25px; line-height:1.3; }
@@ -77,10 +85,10 @@
     "@context":"https://schema.org",
     "@type":"Article",
     "headline":"園遊會賣什麼？適合學校擺攤的商品選擇",
-    "description":"從好上手、不需現場製作、方便販售與保存等條件，認識適合學校園遊會擺攤的商品。",
+    "description":"比較即食甜點、包裝飲料、熟食、烘焙點心與攤位遊戲，從火源、人力、製作、保存與清理條件選擇適合的園遊會商品。",
     "image":"https://qqbar2013.github.io/web/uploads/1/2/4/5/124560042/1436017282-1029.webp",
     "datePublished":"2026-10-04",
-    "dateModified":"2026-10-04",
+    "dateModified":"2026-10-14",
     "author":{"@type":"Organization","name":"話拳寒天Q棒"},
     "publisher":{"@type":"Organization","name":"話拳寒天Q棒"},
     "mainEntityOfPage":"https://qqbar2013.github.io/web/school-carnival-guide.html"
@@ -115,6 +123,7 @@
       <div class="hero-copy">
         <p class="eyebrow">還沒決定商品，也可以先從這裡開始</p>
         <h1>園遊會賣什麼？</h1>
+        <p class="byline">由話拳寒天Q棒園遊會服務團隊整理｜更新日期：2026 年 10 月</p>
         <p class="lead">適合學校園遊會的商品，不只要吸引人，更要讓學生容易上手、現場不用忙著製作，也方便班級事前準備。寒天Q棒就是為這種快節奏的活動而準備的選擇。</p>
         <div class="actions">
           <a class="button" href="#how-to-choose">先看怎麼選商品</a>
@@ -124,6 +133,62 @@
     </div>
 
     <article>
+      <section class="answer-box" aria-labelledby="quick-answer-title">
+        <h2 id="quick-answer-title">園遊會可以賣什麼？先看快速答案</h2>
+        <p>園遊會常見品項包括即食甜點、包裝飲料、熟食、烘焙點心、二手商品與攤位遊戲。選擇時應先考慮學校是否限制火源、現場人力、製作時間、保存方式及活動後清理。若希望學生也能快速上手，可優先考慮無須加工、單份包裝、可直接販售的商品，例如寒天Q棒。</p>
+        <div class="comparison-wrap" role="region" aria-label="園遊會品項比較表" tabindex="0">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th scope="col">品項</th>
+                <th scope="col">是否用火</th>
+                <th scope="col">現場製作</th>
+                <th scope="col">人力需求</th>
+                <th scope="col">注意事項</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">寒天Q棒</th>
+                <td>不需要</td>
+                <td>不需要</td>
+                <td>低</td>
+                <td>事先確認保冷、取貨與搬運方式</td>
+              </tr>
+              <tr>
+                <th scope="row">包裝飲料</th>
+                <td>不需要</td>
+                <td>不需要</td>
+                <td>低</td>
+                <td>注意重量、冰塊與包材回收</td>
+              </tr>
+              <tr>
+                <th scope="row">炸物／熟食</th>
+                <td>通常需要</td>
+                <td>需要</td>
+                <td>高</td>
+                <td>先確認火源規定、油煙與清潔方式</td>
+              </tr>
+              <tr>
+                <th scope="row">烘焙點心</th>
+                <td>通常不需要</td>
+                <td>可事先準備</td>
+                <td>中低</td>
+                <td>注意包裝、保存與過敏原資訊</td>
+              </tr>
+              <tr>
+                <th scope="row">攤位遊戲</th>
+                <td>不需要</td>
+                <td>不適用</td>
+                <td>中</td>
+                <td>規劃獎品、動線與遊戲規則</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="comparison-note">實際規定仍應以各校公告及場地條件為準。</p>
+      </section>
+
       <section id="how-to-choose">
         <h2>先別急著選品項，想想現場會遇到什麼</h2>
         <p>園遊會通常由家長、老師和學生一起輪班。商品如果需要複雜製作、很多器具或長時間教學，忙起來容易手忙腳亂。挑選時，可以先看這四個條件：</p>
@@ -175,7 +240,7 @@
 
       <section class="tip">
         <h2>我們不是第一次服務園遊會</h2>
-        <p>話拳寒天Q棒累積學校、家庭日與各類活動服務經驗，您也可以直接查看歷年園遊會現場紀錄。</p>
+        <p>依據話拳寒天Q棒 14 年、服務 800 間以上學校的第一手經驗，班級籌備時最常遇到的問題是火源限制、學生能否操作、尖峰人潮、保存與搬運。這些實際情況也是本篇建議的整理依據，您也可以直接查看歷年園遊會現場紀錄。</p>
         <div class="stats" aria-label="園遊會服務實績">
           <div class="stat"><strong>14 年</strong><span>服務經驗</span></div>
           <div class="stat"><strong>200+</strong><span>家庭日</span></div>
